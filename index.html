@@ -1595,6 +1595,12 @@
       .showcase-wrap { padding: 0 44px; }
       .showcase-btn { width: 38px; height: 38px; font-size: 0.9rem; }
     }
+    @keyframes cardPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(200,112,138,0); }
+      30%  { box-shadow: 0 0 0 8px rgba(200,112,138,0.55); }
+      100% { box-shadow: 0 0 0 0 rgba(200,112,138,0); }
+    }
+    .product-card.highlight-pulse { animation: cardPulse 2s ease-out !important; }
   </style>
 </head>
 <body>
@@ -2621,18 +2627,61 @@
       // Lightbox
       const lbOrderBtn = document.getElementById('showcaseLbOrderBtn');
       const lbShopBtn = document.getElementById('showcaseLbShop');
+      let currentProduct = '';
+
+      // Maps slider product name → keyword to search in the product grid
+      const productKeywords = {
+        'Handmade Vegan Turmeric Soap': 'Turmeric Soap',
+        'Face Wash Gel': 'Face Wash Gel',
+        'Collagen Skincare': 'Collagen Day',
+        'Charcoal Soap': 'Charcoal Soap',
+        'Bath Rock Crystals': 'Bath Crystals',
+        'Hydro Boosting Face Cream': 'Hydro Boosting',
+        'Castor Oil': 'Castor Oil',
+        'Tissue Oil for Face & Body': 'Tissue Oil',
+        'Facial Toner': 'Facial Toner',
+        'Wrinkle Filler Serum': 'Wrinkle Filler',
+        'Natural Vit C Glow Serum': 'Vit C Glow',
+        'Lip Balm': 'Lip Balm'
+      };
+
       slides.forEach(function(slide) {
         slide.querySelector('img').addEventListener('click', function() {
           lbImg.src = this.src;
-          const product = slide.getAttribute('data-product') || 'a Pamperlang product';
-          const msg = encodeURIComponent('Hi Riette! I would like to order the ' + product + ' 🌸 Please let me know the price and how to pay. Thank you!');
+          currentProduct = slide.getAttribute('data-product') || 'a Pamperlang product';
+          const msg = encodeURIComponent('Hi Riette! I would like to order the ' + currentProduct + ' 🌸 Please let me know the price and how to pay. Thank you!');
           lbOrderBtn.href = 'https://wa.me/27798908527?text=' + msg;
           lb.classList.add('open');
         });
       });
+
       lbShopBtn.addEventListener('click', function() {
         closeLightbox();
-        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        const keyword = productKeywords[currentProduct];
+        if (keyword) {
+          // Reset filter so all products are visible
+          filterProducts('all', null);
+          setTimeout(function() {
+            // Find the matching product card by its name text
+            const cards = document.querySelectorAll('.product-card');
+            let found = null;
+            cards.forEach(function(card) {
+              const nameEl = card.querySelector('.product-name');
+              if (nameEl && nameEl.textContent.toLowerCase().includes(keyword.toLowerCase())) {
+                if (!found) found = card;
+              }
+            });
+            if (found) {
+              found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              found.classList.add('highlight-pulse');
+              setTimeout(function() { found.classList.remove('highlight-pulse'); }, 2200);
+            } else {
+              document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 300);
+        } else {
+          document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
       });
 
       function closeLightbox() { lb.classList.remove('open'); lbImg.src = ''; }
