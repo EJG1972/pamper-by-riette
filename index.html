@@ -2658,7 +2658,7 @@
         </div>
         <div id="deliverySection" style="display:none;">
           <input type="text" id="custAddress" placeholder="Your delivery address" class="cart-input"/>
-          <div class="cart-delivery-info">⚠️ Delivery is an extra cost. Marjorie will confirm the delivery fee with you directly.</div>
+          <div class="cart-delivery-info">⚠️ Delivery is an extra cost. Riette will confirm the delivery fee with you directly.</div>
         </div>
       </div>
 
@@ -2805,8 +2805,8 @@
 
     function updateWhatsAppLink(name, price, fragrance) {
       const msg = fragrance
-        ? `Hi Marjorie! I'd like to order the *${name}* (${fragrance}) at ${price}. Please let me know how to proceed.`
-        : `Hi Marjorie! I'd like to order the *${name}* at ${price}. Please let me know how to proceed.`;
+        ? `Hi Riette! I'd like to order the *${name}* (${fragrance}) at ${price}. Please let me know how to proceed.`
+        : `Hi Riette! I'd like to order the *${name}* at ${price}. Please let me know how to proceed.`;
       document.getElementById('modalWhatsapp').href = `https://wa.me/27798908527?text=${encodeURIComponent(msg)}`;
     }
 
@@ -2943,7 +2943,7 @@
       let total = 0;
       cart.forEach(item => { total += parsePrice(item.price) * item.qty; });
 
-      let msg = `Hi Marjorie!\n\nI would like to place the following order:\n\n`;
+      let msg = `Hi Riette!\n\nI would like to place the following order:\n\n`;
       msg += `MY DETAILS\n`;
       msg += `Name: ${name}\n`;
       msg += `Phone: ${phone}\n`;
