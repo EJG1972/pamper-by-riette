@@ -1401,7 +1401,8 @@
       .qty-btn { width: 32px; height: 32px; font-size: 1.1rem; }
       .qty-num { font-size: 0.95rem; min-width: 20px; }
       .cart-item-remove { font-size: 0.82rem; }
-      .cart-footer { padding: 1rem 1.5rem 1.5rem; }
+      .cart-footer { padding: 1rem 1.5rem max(1.5rem, env(safe-area-inset-bottom, 1.5rem)); }
+      .btn-continue-shopping { margin-bottom: 0.5rem; }
       .cart-total-amount { font-size: 1.7rem; }
       .cart-send-btn { font-size: 0.95rem; padding: 1.1rem; }
 
