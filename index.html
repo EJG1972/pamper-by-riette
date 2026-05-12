@@ -777,6 +777,14 @@
       font-size: 5rem;
     }
 
+    .modal-img-card {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 28px 28px 0 0;
+      background: var(--cream);
+    }
+
     .modal-body { padding: 2rem; }
 
     .modal-category {
@@ -1708,7 +1716,6 @@
           <div class="showcase-slide" data-product="Hair Growth Oil"><img src="product-card-01.jpeg" alt="Hair Growth Oil"></div>
           <div class="showcase-slide" data-product="Handmade Vegan Turmeric Soap"><img src="product-card-02.jpeg" alt="Handmade Vegan Turmeric Soap"></div>
           <div class="showcase-slide" data-product="Face Wash Gel"><img src="product-card-03.jpeg" alt="Face Wash Gel"></div>
-          <div class="showcase-slide" data-product="Face Wash Gel"><img src="product-card-04.jpeg" alt="Face Wash Gel"></div>
           <div class="showcase-slide" data-product="Collagen Skincare"><img src="product-card-05.jpeg" alt="Collagen Skincare"></div>
           <div class="showcase-slide" data-product="Chest Vapor Rub"><img src="product-card-06.jpeg" alt="Chest Vapor Rub"></div>
           <div class="showcase-slide" data-product="2-in-1 Shampoo (Rooibos &amp; Jojoba)"><img src="product-card-07.jpeg" alt="2-in-1 Shampoo"></div>
@@ -1735,6 +1742,19 @@
           <div class="showcase-slide" data-product="Facial Scrub"><img src="product-card-28.jpeg" alt="Facial Scrub"></div>
           <div class="showcase-slide" data-product="Lip Balm"><img src="product-card-29.jpeg" alt="Lip Balm"></div>
           <div class="showcase-slide" data-product="Naturally Slim Hunger Stop"><img src="product-card-30.jpeg" alt="Naturally Slim Hunger Stop"></div>
+          <div class="showcase-slide" data-product="Collagen Powder &amp; Capsules"><img src="product-card-44.jpeg" alt="Collagen Powder &amp; Capsules"></div>
+          <div class="showcase-slide" data-product="Anxiety &amp; Headache Buster Roller"><img src="product-card-45.jpeg" alt="Anxiety &amp; Headache Buster Roller"></div>
+          <div class="showcase-slide" data-product="Cortisol Support Drops"><img src="product-card-33.jpeg" alt="Cortisol Support Drops"></div>
+          <div class="showcase-slide" data-product="Monalisa Drops"><img src="product-card-34.jpeg" alt="Monalisa Drops"></div>
+          <div class="showcase-slide" data-product="Cuticle &amp; Nail Growth Roller"><img src="product-card-35.jpeg" alt="Cuticle &amp; Nail Growth Roller"></div>
+          <div class="showcase-slide" data-product="Herbal Stress Drops"><img src="product-card-36.jpeg" alt="Herbal Stress Drops"></div>
+          <div class="showcase-slide" data-product="Rooibos Revive Butter"><img src="product-card-37.jpeg" alt="Rooibos Revive Butter"></div>
+          <div class="showcase-slide" data-product="Muscle Rub &amp; Pain Oil"><img src="product-card-38.jpeg" alt="Muscle Rub &amp; Pain Oil"></div>
+          <div class="showcase-slide" data-product="Kiddies Calm &amp; Sleep Roller"><img src="product-card-39.jpeg" alt="Kiddies Calm &amp; Sleep Roller"></div>
+          <div class="showcase-slide" data-product="Heel Balm"><img src="product-card-40.jpeg" alt="Heel Balm"></div>
+          <div class="showcase-slide" data-product="Coffee &amp; Salt Scrub"><img src="product-card-41.jpeg" alt="Coffee &amp; Salt Scrub"></div>
+          <div class="showcase-slide" data-product="Immune Care Drops"><img src="product-card-42.jpeg" alt="Immune Care Drops"></div>
+          <div class="showcase-slide" data-product="Fat Burn"><img src="product-card-43.jpeg" alt="Fat Burn"></div>
         </div>
       </div>
       <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
@@ -2749,11 +2769,67 @@
       document.getElementById('fragranceError').style.display = 'none';
       document.getElementById('sizeError').style.display = 'none';
 
+      const productCardImages = {
+        'Hair Growth Oil 50ml': 'product-card-01.jpeg',
+        '2-in-1 Conditioning Shampoo': 'product-card-08.jpeg',
+        'Turmeric Soap': 'product-card-03.jpeg',
+        'Activated Charcoal Soap': 'product-card-04.jpeg',
+        'Bath Crystals': 'product-card-05.jpeg',
+        'Activated Charcoal Shampoo': 'product-card-07.jpeg',
+        'Activated Charcoal Conditioner': 'product-card-07.jpeg',
+        'Collagen & Keratin Shampoo': 'product-card-09.jpeg',
+        'Collagen & Keratin Conditioner': 'product-card-09.jpeg',
+        'Face Wash Gel 100ml': 'product-card-10.jpeg',
+        'Chest Vapor Rub 50g': 'product-card-11.jpeg',
+        'Chest Vapor Rub 15g': 'product-card-11.jpeg',
+        'Sinus & Congestion Roller 10ml': 'product-card-12.jpeg',
+        'Sleepy Pillow Mist 50ml': 'product-card-13.jpeg',
+        '2-in-1 Micellar Water & Toner 50ml': 'product-card-14.jpeg',
+        'Acne Cream with Tea Tree Oil 50g': 'product-card-15.jpeg',
+        'Hydro Boosting Face Cream 50g': 'product-card-16.jpeg',
+        'Natural Botox Roller 10ml': 'product-card-17.jpeg',
+        'Castor Oil': 'product-card-18.jpeg',
+        'Collagen Day / Night Cream': 'product-card-19.jpeg',
+        'Collagen Eye Cream': 'product-card-19.jpeg',
+        'Collagen Skincare Sample Pack': 'product-card-19.jpeg',
+        'Natural Retinol 30ml': 'product-card-21.jpeg',
+        'Tissue Oil for Face & Body 50ml': 'product-card-22.jpeg',
+        'Facial Toner with Witch Hazel 100ml': 'product-card-23.jpeg',
+        'Wrinkle Filler Serum 30ml': 'product-card-24.jpeg',
+        'Acne Roller 10ml': 'product-card-25.jpeg',
+        'Rose Water 50ml': 'product-card-26.jpeg',
+        'Natural Vit C Glow Serum 30ml': 'product-card-27.jpeg',
+        'Facial Scrub 50g': 'product-card-28.jpeg',
+        'Lip Balm 15g': 'product-card-29.jpeg',
+        'Hunger Stop 60 Capsules': 'product-card-30.jpeg',
+        'Collagen Powder 150g': 'product-card-44.jpeg',
+        'Collagen Capsules Packet 120': 'product-card-44.jpeg',
+        'Pure Bovine Collagen Capsules 120': 'product-card-44.jpeg',
+        'Anxiety & Headache Buster Roller 10ml': 'product-card-45.jpeg',
+        'Cortisol Herbal Support Drops': 'product-card-33.jpeg',
+        'Monalisa — Female Hormone Support': 'product-card-34.jpeg',
+        'Cuticle & Nail Growth Roller 10ml': 'product-card-35.jpeg',
+        'Stress Drops': 'product-card-36.jpeg',
+        'Rooibos Revive Butter 200g': 'product-card-37.jpeg',
+        'Muscle Rub': 'product-card-38.jpeg',
+        'Pain & Inflammation Oil 50ml': 'product-card-38.jpeg',
+        'Kiddies Calm & Sleep Roller': 'product-card-39.jpeg',
+        'Heel & Elbow Balm 50gr': 'product-card-40.jpeg',
+        'Fragrance Free Coffee & Salt Scrub with Rosemary 50gr': 'product-card-41.jpeg',
+        'Herbal Immune Care Drops': 'product-card-42.jpeg',
+        'Fat Burn': 'product-card-43.jpeg'
+      };
+      const cardImage = productCardImages[name];
+
       const imgWrap = document.getElementById('modalImgWrap');
       const rotationStyle = rotation ? `transform:${rotation};` : '';
-      imgWrap.innerHTML = img
-        ? `<img src="${img}" class="modal-img" alt="${name}" style="image-orientation:from-image;${rotationStyle}"/>`
-        : `<div class="modal-img-placeholder">🌸</div>`;
+      if (cardImage) {
+        imgWrap.innerHTML = `<img src="${cardImage}" class="modal-img-card" alt="${name}"/>`;
+      } else {
+        imgWrap.innerHTML = img
+          ? `<img src="${img}" class="modal-img" alt="${name}" style="image-orientation:from-image;${rotationStyle}"/>`
+          : `<div class="modal-img-placeholder">🌸</div>`;
+      }
 
       // Size selector
       const sizeSection = document.getElementById('sizeSection');
