@@ -3082,6 +3082,10 @@
       const total = slides.length;
       let current = 0;
       let autoTimer;
+      let looping = false;
+
+      // Clone all slides and append so the loop is seamless
+      slides.forEach(s => track.appendChild(s.cloneNode(true)));
 
       function spv() {
         if (window.innerWidth <= 580) return 1;
@@ -3089,26 +3093,45 @@
         return 3;
       }
 
-      function maxPos() { return total - spv(); }
-
       function goTo(n) {
-        const max = maxPos();
-        current = Math.max(0, Math.min(n, max));
-        const sw = slides[0].offsetWidth;
+        current = n;
+        const sw = track.querySelectorAll('.showcase-slide')[0].offsetWidth;
         track.style.transform = 'translateX(-' + (current * sw) + 'px)';
-        progress.style.width = max > 0 ? ((current / max) * 100) + '%' : '0%';
+        const pos = current % total;
+        progress.style.width = total > 1 ? ((pos / (total - 1)) * 100) + '%' : '0%';
+
+        // When we reach the cloned section, silently snap back to the originals
+        if (current >= total && !looping) {
+          looping = true;
+          setTimeout(function() {
+            track.style.transition = 'none';
+            current = current - total;
+            const sw2 = track.querySelectorAll('.showcase-slide')[0].offsetWidth;
+            track.style.transform = 'translateX(-' + (current * sw2) + 'px)';
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                track.style.transition = '';
+                looping = false;
+              });
+            });
+          }, 560);
+        }
       }
 
       function resetAuto() {
         clearInterval(autoTimer);
         autoTimer = setInterval(function() {
-          goTo(current >= maxPos() ? 0 : current + 1);
+          goTo(current + 1);
         }, 4000);
       }
 
-      document.getElementById('showcasePrev').addEventListener('click', function() { goTo(current - 1); resetAuto(); });
+      document.getElementById('showcasePrev').addEventListener('click', function() {
+        if (current <= 0) { current = total; }
+        goTo(current - 1);
+        resetAuto();
+      });
       document.getElementById('showcaseNext').addEventListener('click', function() { goTo(current + 1); resetAuto(); });
-      window.addEventListener('resize', function() { goTo(0); });
+      window.addEventListener('resize', function() { track.style.transition = 'none'; goTo(0); setTimeout(function(){ track.style.transition=''; }, 50); });
       resetAuto();
 
       // Lightbox
