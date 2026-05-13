@@ -1717,6 +1717,11 @@
           <div class="showcase-slide" data-product="Sleepy Pillow Mist"><img src="product-card-13.jpeg" alt="Sleepy Pillow Mist"></div>
           <div class="showcase-slide" data-product="Chest Vapor Rub"><img src="product-card-11.jpeg" alt="Chest Vapor Rub"></div>
           <div class="showcase-slide" data-product="Sinus &amp; Congestion Roller"><img src="product-card-12.jpeg" alt="Sinus &amp; Congestion Roller"></div>
+          <div class="showcase-slide" data-product="Castor Oil"><img src="product-card-18.jpeg" alt="Castor Oil"></div>
+          <div class="showcase-slide" data-product="Pain &amp; Inflammation Oil"><img src="product-card-38.jpeg" alt="Pain &amp; Inflammation Oil"></div>
+          <div class="showcase-slide" data-product="Collagen Skincare Sample Pack"><img src="product-card-19.jpeg" alt="Collagen Skincare Sample Pack"></div>
+          <div class="showcase-slide" data-product="Natural Botox Roller"><img src="product-card-17.jpeg" alt="Natural Botox Roller"></div>
+          <div class="showcase-slide" data-product="Facial Scrub"><img src="product-card-28.jpeg" alt="Facial Scrub"></div>
         </div>
       </div>
       <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
@@ -3104,6 +3109,7 @@
       document.getElementById('showcasePrev').addEventListener('click', function() { goTo(current - 1); resetAuto(); });
       document.getElementById('showcaseNext').addEventListener('click', function() { goTo(current + 1); resetAuto(); });
       window.addEventListener('resize', function() { goTo(0); });
+      resetAuto();
 
       // Lightbox
       const lbOrderBtn = document.getElementById('showcaseLbOrderBtn');
