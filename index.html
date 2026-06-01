@@ -1649,9 +1649,46 @@
     }
     .product-card.highlight-pulse { animation: cardPulse 2s ease-out !important; }
 
+    /* ── PRICE DROP BADGE ── */
+    .product-img { position: relative; }
+    .badge-price-drop {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--bark);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border-radius: 50px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      background: var(--bark);
+      color: #fff;
+      text-align: center;
+      padding: 0.55rem 5%;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .top-banner span { color: var(--rose-light); }
+
   </style>
 </head>
 <body>
+
+  <!-- Top Announcement Banner -->
+  <div class="top-banner">
+    🏷️ Velsorgprodukte — Ou verpakking, nuwe pryse &nbsp;|&nbsp; <span>Terwyl voorraad hou — Bestel nou!</span>
+  </div>
 
   <!-- MAINTENANCE OVERLAY — remove this block when ready to go live -->
 
@@ -3254,6 +3291,14 @@
       goTo(0);
       resetAuto();
     })();
+
+    // Add Price Drop badge to all Facial Skincare product cards
+    document.querySelectorAll('[data-category="Facial Skincare"] .product-img').forEach(function(img) {
+      var badge = document.createElement('div');
+      badge.className = 'badge-price-drop';
+      badge.textContent = 'Price Drop';
+      img.appendChild(badge);
+    });
   </script>
 </body>
 </html>
