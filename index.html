@@ -1670,44 +1670,10 @@
 
     /* ── PRICE DROP BADGE ── */
     .product-img { position: relative; }
-    .badge-price-drop {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--bark);
-      color: #fff;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.28rem 0.7rem;
-      border-radius: 50px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* ── TOP BANNER ── */
-    .top-banner {
-      background: var(--bark);
-      color: #fff;
-      text-align: center;
-      padding: 0.55rem 5%;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-    .top-banner span { color: var(--rose-light); }
 
   </style>
 </head>
 <body>
-
-  <!-- Top Announcement Banner -->
-  <div class="top-banner">
-    🏷️ Up to 30% Price Drop on all Skincare Products &nbsp;|&nbsp; <span>While stocks last — Order now!</span>
-  </div>
 
   <!-- MAINTENANCE OVERLAY — remove this block when ready to go live -->
 
@@ -1839,13 +1805,13 @@
       <img id="showcaseLbImg" src="" alt="Product detail">
       <div class="showcase-lb-actions">
         <div class="showcase-lb-actions-title">Ready to order?</div>
-        <div class="showcase-lb-actions-hint">WhatsApp Riette directly for this one product — or close this and use the shop below to add multiple products to your cart and send everything in one message.</div>
+        <div class="showcase-lb-actions-hint">WhatsApp Riette directly — or click below to view the product in the shop and add it to your cart.</div>
         <div class="showcase-lb-btns">
           <a id="showcaseLbOrderBtn" href="#" target="_blank" class="showcase-lb-order">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
             WhatsApp Riette
           </a>
-          <button class="showcase-lb-shop" id="showcaseLbShop">Browse the Shop ↓</button>
+          <button class="showcase-lb-shop" id="showcaseLbShop">View Product &amp; Add to Cart ↓</button>
         </div>
       </div>
     </div>
@@ -3251,20 +3217,22 @@
       const lbShopBtn = document.getElementById('showcaseLbShop');
       let currentProduct = '';
 
-      // Maps slider product name → keyword to search in the product grid
+      // Maps slider product name (partial) → keyword to search in the product grid
       const productKeywords = {
-        'Handmade Vegan Turmeric Soap': 'Turmeric Soap',
+        'Lip Balm': 'Lip Balm',
         'Face Wash Gel': 'Face Wash Gel',
-        'Collagen Skincare': 'Collagen Day',
+        'Hydro Boosting': 'Hydro Boosting',
+        'Facial Toner': 'Facial Toner',
+        'Chest Vapour Rub': 'Chest Vapour Rub',
+        'Collagen Day': 'Collagen Day',
+        'Collagen Eye Cream': 'Collagen Eye Cream',
+        'Turmeric Soap': 'Turmeric Soap',
         'Charcoal Soap': 'Charcoal Soap',
         'Bath Rock Crystals': 'Bath Crystals',
-        'Hydro Boosting Face Cream': 'Hydro Boosting',
         'Castor Oil': 'Castor Oil',
-        'Tissue Oil for Face & Body': 'Tissue Oil',
-        'Facial Toner': 'Facial Toner',
-        'Wrinkle Filler Serum': 'Wrinkle Filler',
-        'Natural Vit C Glow Serum': 'Vit C Glow',
-        'Lip Balm': 'Lip Balm'
+        'Tissue Oil': 'Tissue Oil',
+        'Wrinkle Filler': 'Wrinkle Filler',
+        'Vit C Glow': 'Vit C Glow'
       };
 
       slides.forEach(function(slide) {
@@ -3279,12 +3247,13 @@
 
       lbShopBtn.addEventListener('click', function() {
         closeLightbox();
-        const keyword = productKeywords[currentProduct];
+        let keyword = null;
+        for (const key in productKeywords) {
+          if (currentProduct.includes(key)) { keyword = productKeywords[key]; break; }
+        }
         if (keyword) {
-          // Reset filter so all products are visible
           filterProducts('all', null);
           setTimeout(function() {
-            // Find the matching product card by its name text
             const cards = document.querySelectorAll('.product-card');
             let found = null;
             cards.forEach(function(card) {
@@ -3295,8 +3264,7 @@
             });
             if (found) {
               found.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              found.classList.add('highlight-pulse');
-              setTimeout(function() { found.classList.remove('highlight-pulse'); }, 2200);
+              setTimeout(function() { found.click(); }, 600);
             } else {
               document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
             }
@@ -3315,13 +3283,6 @@
       resetAuto();
     })();
 
-    // Add Price Drop badge to all Facial Skincare product cards
-    document.querySelectorAll('[data-category="Facial Skincare"] .product-img').forEach(function(img) {
-      var badge = document.createElement('div');
-      badge.className = 'badge-price-drop';
-      badge.textContent = 'Up to 30% Off';
-      img.appendChild(badge);
-    });
   </script>
 </body>
 </html>
