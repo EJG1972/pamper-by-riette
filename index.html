@@ -3217,23 +3217,6 @@
       const lbShopBtn = document.getElementById('showcaseLbShop');
       let currentProduct = '';
 
-      // Maps slider product name (partial) → keyword to search in the product grid
-      const productKeywords = {
-        'Lip Balm': 'Lip Balm',
-        'Face Wash Gel': 'Face Wash Gel',
-        'Hydro Boosting': 'Hydro Boosting',
-        'Facial Toner': 'Facial Toner',
-        'Chest Vapour Rub': 'Chest Vapor Rub',
-        'Collagen Day': 'Collagen Day',
-        'Collagen Eye Cream': 'Collagen Eye Cream',
-        'Turmeric Soap': 'Turmeric Soap',
-        'Charcoal Soap': 'Charcoal Soap',
-        'Bath Rock Crystals': 'Bath Crystals',
-        'Castor Oil': 'Castor Oil',
-        'Tissue Oil': 'Tissue Oil',
-        'Wrinkle Filler': 'Wrinkle Filler',
-        'Vit C Glow': 'Vit C Glow'
-      };
 
       slides.forEach(function(slide) {
         slide.querySelector('img').addEventListener('click', function() {
@@ -3247,31 +3230,29 @@
 
       lbShopBtn.addEventListener('click', function() {
         closeLightbox();
-        let keyword = null;
-        for (const key in productKeywords) {
-          if (currentProduct.includes(key)) { keyword = productKeywords[key]; break; }
-        }
-        if (keyword) {
-          filterProducts('all', null);
-          setTimeout(function() {
-            const cards = document.querySelectorAll('.product-card');
-            let found = null;
+        // Strip price info (everything after " — ") to get the clean product name
+        const cleanName = currentProduct.split(' — ')[0].trim();
+        const words = cleanName.split(' ');
+        filterProducts('all', null);
+        setTimeout(function() {
+          const cards = document.querySelectorAll('.product-card');
+          let found = null;
+          // Try matching from longest to shortest word sequence until found
+          for (let len = words.length; len >= 2 && !found; len--) {
+            const term = words.slice(0, len).join(' ').toLowerCase();
             cards.forEach(function(card) {
+              if (found) return;
               const nameEl = card.querySelector('.product-name');
-              if (nameEl && nameEl.textContent.toLowerCase().includes(keyword.toLowerCase())) {
-                if (!found) found = card;
-              }
+              if (nameEl && nameEl.textContent.toLowerCase().includes(term)) found = card;
             });
-            if (found) {
-              found.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              setTimeout(function() { found.click(); }, 600);
-            } else {
-              document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 300);
-        } else {
-          document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-        }
+          }
+          if (found) {
+            found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function() { found.click(); }, 600);
+          } else {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300);
       });
 
       function closeLightbox() { lb.classList.remove('open'); lbImg.src = ''; }
