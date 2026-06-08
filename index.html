@@ -1503,6 +1503,9 @@
     .slide-price-tag span { color: var(--rose-light); font-size: 0.85rem; }
     .showcase-slide img {
       width: 100%;
+      height: 480px;
+      object-fit: contain;
+      background: var(--cream);
       border-radius: 18px;
       box-shadow: 0 6px 28px rgba(139,58,88,0.13);
       display: block;
@@ -1655,11 +1658,13 @@
     @media (max-width: 900px) {
       .showcase-slide { flex: 0 0 50%; }
       .showcase-wrap { padding: 0 52px; }
+      .showcase-slide img { height: 360px; }
     }
     @media (max-width: 580px) {
       .showcase-slide { flex: 0 0 85%; }
       .showcase-wrap { padding: 0 44px; }
       .showcase-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+      .showcase-slide img { height: 280px; }
     }
     @keyframes cardPulse {
       0%   { box-shadow: 0 0 0 0 rgba(200,112,138,0); }
@@ -1770,25 +1775,20 @@
     </div>
   </section>
 
-  <!-- Velsorg Reeks Showcase Slider -->
+  <!-- Product Showcase Slider -->
   <section class="showcase-section" id="showcase">
     <div class="showcase-header">
-      <p class="section-tag">Velsorg Reeks</p>
-      <h2 class="section-title">Price Drop — While Stocks Last</h2>
-      <p class="section-sub">Tap any product to see more — WhatsApp Riette to order while stocks last.</p>
+      <p class="section-tag">Pamperlang Range</p>
+      <h2 class="section-title">Our Product Range</h2>
+      <p class="section-sub">Tap any product to see more — WhatsApp Riette to place your order.</p>
     </div>
     <div class="showcase-wrap">
       <button class="showcase-btn showcase-btn-prev" id="showcasePrev" aria-label="Previous">&#8592;</button>
       <div class="showcase-outer">
         <div class="showcase-track" id="showcaseTrack">
-          <div class="showcase-slide" data-product="Velsorg Reeks — Up to 30% Off"><img src="luukse-look-banner.jpeg" alt="Nuwe Luukse Look — Velsorg Reeks"></div>
-          <div class="showcase-slide" data-product="Lip Balm 15g — Was R50, Now only R35!"><img src="product-card-29.jpeg" alt="Lip Balm 15g"><div class="slide-price-tag"><s>R50</s> → <span>R35</span></div></div>
-          <div class="showcase-slide" data-product="Face Wash Gel 100ml — Was R159, Now only R110!"><img src="product-card-10.jpeg" alt="Face Wash Gel 100ml"><div class="slide-price-tag"><s>R159</s> → <span>R110</span></div></div>
-          <div class="showcase-slide" data-product="Hydro Boosting Face Cream 50g — Was R229, Now only R140!"><img src="product-card-16.jpeg" alt="Hydro Boosting Face Cream 50g"><div class="slide-price-tag"><s>R229</s> → <span>R140</span></div></div>
-          <div class="showcase-slide" data-product="Facial Toner with Witch Hazel 100ml — Was R159, Now only R110!"><img src="product-card-23.jpeg" alt="Facial Toner with Witch Hazel 100ml"><div class="slide-price-tag"><s>R159</s> → <span>R110</span></div></div>
-          <div class="showcase-slide" data-product="Chest Vapour Rub Glass Jar 50g — Was R120, Now only R110!"><img src="product-card-11.jpeg" alt="Chest Vapour Rub 50g"><div class="slide-price-tag"><s>R120</s> → <span>R110</span></div></div>
-          <div class="showcase-slide" data-product="Collagen Day / Night Cream 50ml — Was R245, Now only R169!"><img src="product-card-19.jpeg" alt="Collagen Day Night Cream"><div class="slide-price-tag"><s>R245</s> → <span>R169</span></div></div>
-          <div class="showcase-slide" data-product="Collagen Eye Cream 15ml — Was R220, Now only R150!"><img src="https://media.portmoni.com/resized/69614/COLLAGEN_EYE_CREAM-thumbnail-600x600-95.jpg" alt="Collagen Eye Cream"><div class="slide-price-tag"><s>R220</s> → <span>R150</span></div></div>
+          <div class="showcase-slide" data-product="Nuwe Sagte Vroulike Look — Nuwe Labels in Junie!"><img src="nuwe-velsorg-labels.jpeg" alt="Nuwe Pamperlang Labels"></div>
+          <div class="showcase-slide" data-product="Pamperlang — New Look"><img src="https://media.portmoni.com/resized/69614/ChatGPT_Image_May_25_2026_09_33_56_AM-thumbnail-1024x1024.png" alt="Pamperlang New Packaging"></div>
+          <div class="showcase-slide" data-product="Pamperlang — New Packaging"><img src="https://media.portmoni.com/resized/69614/ChatGPT_Image_May_23_2026_08_59_03_AM-thumbnail-1024x1024.png" alt="Pamperlang New Look"></div>
         </div>
       </div>
       <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
