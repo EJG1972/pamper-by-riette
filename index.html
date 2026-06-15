@@ -1676,7 +1676,43 @@
     /* ── PRICE DROP BADGE ── */
     .product-img { position: relative; }
 
-  </style>
+  
+    /* ── SKINCARE INFO MODAL ── */
+    .skin-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:3000;display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+    .skin-overlay.open{display:flex;}
+    .skin-modal{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+    .skin-modal-hdr{background:linear-gradient(135deg,#c17b8e,#e8a0b0);color:#fff;padding:22px 52px 18px 24px;border-radius:14px 14px 0 0;}
+    .skin-modal-hdr h3{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;margin:0 0 4px;}
+    .skin-modal-tagline{font-size:12px;opacity:0.9;font-style:italic;margin-bottom:6px;}
+    .skin-modal-desc{font-size:12px;opacity:0.92;line-height:1.6;}
+    .skin-modal-close{position:absolute;top:12px;right:14px;background:rgba(255,255,255,0.25);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+    .skin-modal-close:hover{background:rgba(255,255,255,0.45);}
+    .skin-modal-body{padding:20px 24px;}
+    .skin-sec{margin-bottom:18px;}
+    .skin-sec-title{font-size:11px;font-weight:800;color:#8B3A52;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+    .skin-ingr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+    .skin-ingr-item{background:#fdf5f7;border:1px solid #f0d0d8;border-radius:8px;padding:9px 11px;}
+    .skin-ingr-name{font-weight:700;font-size:12px;color:#8B3A52;margin-bottom:3px;}
+    .skin-ingr-desc{font-size:11px;color:#666;line-height:1.5;}
+    .skin-list{list-style:none;margin:0;padding:0;}
+    .skin-list li{font-size:12px;color:#444;padding:4px 0 4px 18px;position:relative;line-height:1.5;}
+    .skin-list li::before{content:'✓';position:absolute;left:0;color:#c17b8e;font-weight:700;}
+    .skin-list.numbered{list-style:decimal;padding-left:18px;}
+    .skin-list.numbered li{padding-left:4px;}
+    .skin-list.numbered li::before{content:none;}
+    .skin-list.risks li::before{content:'•';color:#999;}
+    .skin-tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .skin-tag{background:#fdf5f7;border:1px solid #f0d0d8;border-radius:20px;padding:3px 11px;font-size:11px;color:#8B3A52;font-weight:600;}
+    .skin-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 0 4px;border-top:1px solid #f0d0d8;}
+    .skin-badge{font-size:10px;color:#8B3A52;font-weight:700;text-align:center;background:#fdf5f7;border:1px solid #f0d0d8;border-radius:6px;padding:4px 8px;}
+    .info-btn{background:none;border:1.5px solid #c17b8e;color:#c17b8e;border-radius:20px;padding:4px 11px;font-size:11px;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-weight:600;margin-top:6px;}
+    .info-btn:hover{background:#c17b8e;color:#fff;}
+    /* Disclaimer */
+    .disclaimer-btn{background:none;border:none;color:rgba(255,255,255,0.6);font-size:12px;cursor:pointer;text-decoration:underline;padding:0;}
+    .disclaimer-btn:hover{color:#fff;}
+    @media(max-width:500px){.skin-ingr-grid{grid-template-columns:1fr;}.skin-modal-hdr{padding-right:48px;}}
+
+    </style>
 </head>
 <body>
 
@@ -1941,7 +1977,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Lip Balm</div>
           <div class="product-desc">Handcrafted with Coconut Oil and Beeswax — 6 delicious flavours.</div>
-          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'lip-balm\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -1951,7 +1988,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Face Wash Gel 100ml</div>
           <div class="product-desc">SLS-free with 3% Niacinamide and Liquorice Extract — brightens and gently cleanses.</div>
-          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'face-wash-gel\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -1961,7 +1999,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Hydro Boosting & Anti Aging Face Cream 50g</div>
           <div class="product-desc">Fragrance-free anti-aging moisturiser with Hyaluronic Acid and Squalane.</div>
-          <div class="product-footer"><span class="product-price">R229</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R229</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'hydro-face-cream\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -1971,7 +2010,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Facial Toner with Witch Hazel</div>
           <div class="product-desc">Vitamin B3 and Witch Hazel — reduces dark marks and tightens pores.</div>
-          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'toner\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -1981,7 +2021,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Wrinkle Filler Serum 30ml</div>
           <div class="product-desc">1.5% Hyaluronic Acid — plumps skin and visibly reduces fine lines.</div>
-          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'hyaluronic-serum\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -1991,7 +2032,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Collagen Day / Night Cream</div>
           <div class="product-desc">Collagen Peptides with Hyaluronic Acid — firms and hydrates day and night.</div>
-          <div class="product-footer"><span class="product-price">R245</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R245</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'collagen-day-night\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2001,7 +2043,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Collagen Eye Cream</div>
           <div class="product-desc">Collagen eye treatment — firms the eye area and reduces visible wrinkles.</div>
-          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'collagen-eye\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2011,7 +2054,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Natural Vit C Glow Serum 30ml</div>
           <div class="product-desc">Vitamin C and Hyaluronic Acid — evens skin tone and boosts radiance.</div>
-          <div class="product-footer"><span class="product-price">R279</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R279</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'vit-c-serum\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2021,7 +2065,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Tissue Oil for Face & Body 50ml</div>
           <div class="product-desc">Jojoba-based oil — reduces stretch marks, scars, and uneven skin tone.</div>
-          <div class="product-footer"><span class="product-price">R160</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R160</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'tissue-oil\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2031,7 +2076,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">2-in-1 Micellar Water & Toner 50ml</div>
           <div class="product-desc">Frankincense and Jojoba Oil — cleanses, removes makeup and balances skin pH.</div>
-          <div class="product-footer"><span class="product-price">R180</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R180</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'micellar-toner\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2041,7 +2087,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Natural Retinol 30ml</div>
           <div class="product-desc">Bakuchiol and Jojoba Oil — anti-aging benefits without the harshness of synthetic retinol.</div>
-          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'retinol\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2051,7 +2098,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Acne Cream with Tea Tree Oil 50g</div>
           <div class="product-desc">Vitamin B3 and Tea Tree Oil — targets acne and blemishes while keeping skin hydrated.</div>
-          <div class="product-footer"><span class="product-price">R165</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R165</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'acne-cream\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2071,7 +2119,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Natural Botox Roller 10ml</div>
           <div class="product-desc">Castor Oil, Jojoba and Frankincense — smooths fine lines and firms skin naturally.</div>
-          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'natural-botox\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2081,7 +2130,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Rose Water 50ml</div>
           <div class="product-desc">Pure organic alcohol-free rose hydrosol — refreshes, soothes and tones naturally.</div>
-          <div class="product-footer"><span class="product-price">R89</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R89</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'rose-water\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2091,7 +2141,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Facial Scrub 50g</div>
           <div class="product-desc">Lavender and Rose Geranium — removes dead skin cells and reveals a natural glow.</div>
-          <div class="product-footer"><span class="product-price">R169</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R169</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'facial-scrub\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2101,7 +2152,8 @@
           <div class="product-category">Facial Skincare</div>
           <div class="product-name">Acne Roller 10ml</div>
           <div class="product-desc">Tea Tree and Lavender in a roll-on — targeted blemish treatment on the go.</div>
-          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'acne-roller\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2375,7 +2427,8 @@
           <div class="product-category">Kids Collection</div>
           <div class="product-name">Kids Lip Balm</div>
           <div class="product-desc">Fun and nourishing lip balm for little ones — gentle and safe for children.</div>
-          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button>
+            <button class="info-btn" onclick="event.stopPropagation();openSkinInfo(\'lip-balm\')">ℹ More Info</button></div>
         </div>
       </div>
 
@@ -2668,10 +2721,13 @@
 
   <!-- Footer -->
   <footer>
+    <div style="text-align:center;padding:8px 0 0;"><button class="disclaimer-btn" onclick="openDisclaimer()">Disclaimer</button></div>
     <p><strong>Pamper by Riette</strong> — Official Pamperlang Agent · Komani / Queenstown, Eastern Cape</p>
     <p style="margin-top:0.5rem;">Questions? <a href="https://wa.me/27798908527">WhatsApp me</a> · <a href="mailto:thehustlehubsa@outlook.com">thehustlehubsa@outlook.com</a></p>
     <p style="margin-top:0.5rem; opacity:0.5;">Products by <a href="https://www.pamperlangskoonheid.co.za" target="_blank">Pamperlang Skoonheid</a></p>
-  </footer>
+  
+  <!-- Disclaimer trigger in footer -->
+
 
   <!-- Back to Top -->
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
@@ -3267,5 +3323,55 @@
     })();
 
   </script>
+  <!-- Skincare Info Modal -->
+  <div class="skin-overlay" id="skinOverlay" onclick="if(event.target===this)closeSkinModal()">
+    <div class="skin-modal">
+      <button class="skin-modal-close" onclick="closeSkinModal()">×</button>
+      <div class="skin-modal-hdr">
+        <div class="skin-modal-tagline" id="skinTagline"></div>
+        <h3 id="skinName"></h3>
+        <div class="skin-modal-desc" id="skinDesc"></div>
+      </div>
+      <div class="skin-modal-body" id="skinBody"></div>
+    </div>
+  </div>
+  <!-- Disclaimer Modal -->
+  <div class="skin-overlay" id="disclaimerOverlay" onclick="if(event.target===this)closeDisclaimer()">
+    <div class="skin-modal">
+      <button class="skin-modal-close" onclick="closeDisclaimer()">×</button>
+      <div class="skin-modal-hdr"><h3 style="margin:0;">Disclaimer</h3><div class="skin-modal-tagline">Pamperlang Skoonheid — Please read before using our products</div></div>
+      <div class="skin-modal-body"><p style="margin-bottom:16px;">Please read the following information carefully before using our products.</p>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🌿 Natural Skincare Products</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Our skincare products are made with natural ingredients and botanical extracts.</li>
+<li>Results may vary from person to person.</li>
+<li>For external use only.</li>
+<li>Avoid contact with eyes. If contact occurs, rinse thoroughly with water.</li>
+<li>If irritation or redness occurs, discontinue use and consult a dermatologist.</li>
+<li>Perform a patch test before first use, especially if you have sensitive skin.</li>
+<li>Not intended to diagnose, treat, cure or prevent any disease.</li>
+</ul>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🛁 Bath & Body Care Products</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Our bath and body products are for external use only.</li>
+<li>Keep out of reach of children.</li>
+<li>Avoid contact with eyes and mucous membranes.</li>
+<li>If irritation occurs, discontinue use.</li>
+<li>Store in a cool, dry place away from direct sunlight.</li>
+<li>Natural ingredients may cause variations in colour, texture or fragrance. This does not affect product quality.</li>
+</ul>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🌸 Essential Oils</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Essential oils are highly concentrated and intended for external use only.</li>
+<li>Do not ingest.</li>
+<li>Dilute properly before use on skin.</li>
+<li>Not recommended for use during pregnancy, breastfeeding or on children without professional advice.</li>
+<li>Keep out of reach of children.</li>
+<li>Store in a cool, dark place.</li>
+<li>Consult a healthcare professional if you have a medical condition.</li>
+</ul>
+<p style="font-size:12px;color:#999;text-align:center;margin:0;">Your safety is important to us. Thank you for choosing Pamperlang Skoonheid. 💗</p></div>
+    </div>
+  </div>
 </body>
 </html>
