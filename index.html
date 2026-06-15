@@ -3371,5 +3371,189 @@
 <p style="font-size:12px;color:#999;text-align:center;margin:0;">Your safety is important to us. Thank you for choosing Pamperlang Skoonheid. 💗</p></div>
     </div>
   </div>
+  <script>
+  const SKIN_INFO = {
+    'face-wash-gel': {
+      name:'Face Wash Gel', tagline:'Cleanse. Refresh. Glow.',
+      desc:'A gentle yet effective cleanser that purifies the skin without stripping its natural moisture.',
+      ingredients:['Vitamin B3 (Niacinamide)','Liquorice Extract'],
+      benefits:['Gently removes dirt, oil and impurities without drying or irritating','Leaves skin feeling clean, refreshed and perfectly balanced','Brightens skin tone and soothes irritation','Supports the skin barrier for a healthier complexion'],
+      howto:['Wet your face with lukewarm water.','Apply a small amount to your palms.','Gently massage onto your face in circular motions.','Rinse thoroughly and pat dry.','Use morning and evening for best results.'],
+      bestfor:['All skin types','Daily use','Oily, combination and blemish-prone skin','Dull, uneven skin tone'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'micellar-toner': {
+      name:'2 in 1 Micellar Water & Toner', tagline:'Cleanse. Tone. Refresh. One step. Complete care.',
+      desc:'Gently cleanses and removes makeup, dirt and impurities while toning and refreshing your skin in one effortless step. Infused with Frankincense Extract.',
+      ingredients:['Frankincense Extract'],
+      benefits:['Removes makeup, dirt and impurities effectively','Rebalances and revitalises the skin','Soothes and comforts sensitive skin','Promotes a smooth, healthy and glowing appearance'],
+      howto:['Pour a small amount onto a cotton pad.','Gently swipe over face, eyes and neck to remove makeup and impurities.','No need to rinse — follow with your serum and moisturiser.'],
+      bestfor:['All skin types','Daily use','Sensitive and stressed skin','Busy lifestyles'],
+      risks:['Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Keep out of reach of children.']
+    },
+    'toner': {
+      name:'Witch Hazel Facial Toner', tagline:'Hydrate. Balance. Glow.',
+      desc:'A refreshing and nourishing formula designed to rebalance your skin, remove impurities and prep it for the next steps in your skincare routine.',
+      ingredients:['Vitamin B3 (Niacinamide)','Witch Hazel'],
+      benefits:['Instantly refreshes and hydrates for soft, supple skin','Helps tighten pores and remove residue for a smoother look','Regulates oil production without stripping the skin','Improves skin texture and promotes a more radiant complexion'],
+      howto:['After cleansing, pour a small amount onto a cotton pad.','Gently sweep over your face and neck, avoiding the eye area.','Allow to absorb.','Follow with your serum and moisturiser.'],
+      bestfor:['All skin types','Daily use','Dull and tired-looking skin','Oily, combination and blemish-prone skin','Uneven skin tone'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'tissue-oil': {
+      name:'Jojoba Tissue Oil', tagline:"Nature's Liquid Gold for Healthy, Radiant Skin",
+      desc:"A lightweight, nutrient-rich oil that nourishes, protects and restores balance — for beautifully healthy skin and hair. Cold pressed, pure and natural.",
+      ingredients:['100% Pure Jojoba Oil (cold pressed & unrefined)'],
+      benefits:['Moisturises and nourishes without clogging pores','Helps regulate sebum levels — ideal for both oily and dry skin','Rich in antioxidants and Vitamin E to protect the skin barrier','Soothes irritation, redness and sensitivity','Supports healthy cell function and leaves skin looking radiant'],
+      howto:['Apply a few drops to clean, damp skin.','Massage gently into face, neck or body.','Use morning and evening for best results.','Can be used on its own or blended with moisturiser.'],
+      bestfor:['All skin types','Sensitive skin','Dry & dehydrated skin','Oily & combination skin','Mature skin','Hair & scalp care'],
+      risks:['For external use only.','Do a patch test before first use if you have sensitive skin.','Discontinue use if irritation occurs and consult a dermatologist.','Avoid contact with eyes — rinse thoroughly if contact occurs.']
+    },
+    'rose-water': {
+      name:'Pure Rose Water', tagline:"Nature's Gentle Touch for Fresh, Balanced, Radiant Skin",
+      desc:'Steam distilled from fresh rose petals to capture the natural goodness and delicate aroma of roses. 100% pure — no additives, no alcohol.',
+      ingredients:['Pure Rose Hydrosol (steam distilled)','Distilled Water'],
+      benefits:['Instantly refreshes and hydrates tired, dull or dehydrated skin','Helps tighten pores and balance the skin\'s natural pH','Calms irritation, redness and sensitivity','Revitalises skin and leaves it looking fresh, soft and radiantly healthy','Provides a gentle, uplifting floral scent'],
+      howto:['Spray directly onto face or neck.','Or apply with a cotton pad after cleansing.','Use any time of the day to refresh and hydrate.','Can be used before serums, moisturisers or makeup.'],
+      bestfor:['All skin types','Sensitive & irritated skin','Dry & dehydrated skin','Tired, dull skin','Hot weather & after sun','Makeup setting & refreshing'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'vit-c-serum': {
+      name:'Vit C Glow Serum', tagline:'Brighten. Hydrate. Glow. Your daily dose of radiance.',
+      desc:'A lightweight, fast-absorbing formula designed to brighten, even skin tone and boost hydration. Enriched with Vitamin C and Hyaluronic Acid.',
+      ingredients:['Vitamin C (antioxidant, brightening)','Hyaluronic Acid (moisture magnet)'],
+      benefits:['Brightens skin and reduces the look of dark spots','Deeply hydrates, plumps the skin and improves elasticity','Protects the skin from free radical damage and environmental stressors','Smoothes and plumps for a more youthful appearance','Revives tired, dull skin and enhances natural radiance'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops of serum to your face and neck.','Gently pat and press into the skin until fully absorbed.','Follow with moisturiser.','Use every morning for best results.'],
+      bestfor:['All skin types','Dull and tired-looking skin','Uneven skin tone','Early signs of ageing','Dehydrated skin','Daily glow and radiance'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'hyaluronic-serum': {
+      name:'Pure Hyaluronic Acid Serum', tagline:'Hydrate. Plump. Smooth. Renew.',
+      desc:'A Wrinkle Filler Serum that delivers intense hydration deep into the skin to visibly plump fine lines and wrinkles, improve elasticity and restore a smooth, youthful complexion.',
+      ingredients:['100% Pure Hyaluronic Acid (holds up to 1000x its weight in water)'],
+      benefits:['Deeply hydrates and locks in moisture for soft, supple skin','Visibly reduces the appearance of fine lines and wrinkles','Enhances skin firmness and resilience','Supports a healthy barrier for smoother, healthier skin','Leaves skin looking fresh, plump and youthfully glowing'],
+      howto:['Cleanse your face.','Apply 2–3 drops to your face and neck.','Gently pat and press into the skin until fully absorbed.','Follow with your moisturiser.','Use morning and evening for best results.'],
+      bestfor:['All skin types','Dry & dehydrated skin','Fine lines & wrinkles','Dull & tired-looking skin','Mature skin','Loss of firmness'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'retinol': {
+      name:'Natural Retinol Serum', tagline:'Plant-Powered Renewal. Gentle. Effective. Timeless.',
+      desc:'Harnesses the power of Bakuchiol — a plant-based retinol alternative — and Jojoba Oil to visibly improve skin texture and reduce the appearance of fine lines, without irritation.',
+      ingredients:['Bakuchiol (plant-based retinol alternative)','Jojoba Oil'],
+      benefits:['Visibly reduces fine lines and signs of ageing','Supports skin cell renewal for a fresher, more even complexion','Nourishes and maintains the skin\'s natural moisture balance','Gentle and non-irritating — no peeling or sensitivity','Enhances skin clarity, radiance and overall skin health'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops to face and neck in the evening.','Gently massage until fully absorbed.','Follow with a moisturiser.','Use sunscreen during the day.'],
+      bestfor:['All skin types','Fine lines & wrinkles','Uneven skin tone','Dull & tired-looking skin','Sensitive & reactive skin','Skin in need of renewal'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'natural-botox': {
+      name:'Natural Botox Roller 10ml', tagline:'For Younger-Looking Skin. Powered by Nature.',
+      desc:'A luxurious blend of plant-powered ingredients that helps visibly reduce the appearance of fine lines and wrinkles, firm and smooth the skin, and restore a youthful glow — naturally and effectively.',
+      ingredients:['Castor Oil','Jojoba Oil','Rosehip Oil','Frankincense'],
+      benefits:['Reduces the look of fine lines and wrinkles','Improves skin elasticity and firmness','Deeply hydrates and nourishes the skin','Boosts radiance and natural glow','Natural lifting and smoothing effect'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops to face and neck.','Gently massage using upward motions.','Use morning and night for best results.','Follow with moisturiser and sunscreen during the day.'],
+      bestfor:['Fine lines & wrinkles','Loss of firmness','Tired, dull-looking skin','Mature skin','All skin types (patch test for sensitive skin)'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'acne-roller': {
+      name:'Acne Roller', tagline:'Clearer Skin. Naturally.',
+      desc:'A powerful, all-natural blend of pure essential oils and botanical oils that targets breakouts, calms inflammation and promotes clear, healthy-looking skin.',
+      ingredients:['Lavender Oil','Frankincense Oil','Tea Tree Oil','Jojoba Oil'],
+      benefits:['Helps reduce acne and blemishes','Calms redness and irritation','Balances oil production','Clears pores and prevents breakouts','Promotes smoother, healthier skin'],
+      howto:['Cleanse your face and pat skin dry.','Roll the Acne Roller directly on problem areas.','Gently roll over skin using upward or circular motions.','Let the oil absorb — no rinsing needed.','Use morning and night for best results.'],
+      bestfor:['Acne-prone skin','Oily & combination skin','Active breakouts','Redness & inflammation','Uneven skin texture','Teens & adults'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'collagen-day-night': {
+      name:'Collagen Day & Night Cream', tagline:'Firm. Hydrate. Renew.',
+      desc:'A rich yet lightweight moisturiser that works day and night to support collagen production, improve elasticity and reveal a smoother, more youthful-looking skin.',
+      ingredients:['1.5% Hyaluronic Acid','3% Vitamin B3 (Niacinamide)','Liquorice Extract','Collagen Peptides','Nourishing Oils'],
+      benefits:['Boosts skin firmness and elasticity','Deep hydration that lasts all day','Reduces the appearance of fine lines and wrinkles','Improves skin texture','Supports the skin barrier and resilience'],
+      howto:['Cleanse and tone your face.','Apply a pea-sized amount to face and neck.','Gently massage in upward motions until fully absorbed.','Use morning and night for best results.'],
+      bestfor:['All skin types','Fine lines & wrinkles','Loss of firmness','Dull, tired skin','Skin needing deep hydration'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'collagen-eye': {
+      name:'Collagen Eye Cream', tagline:'Brighten. Smooth. Revive.',
+      desc:'A delicate, fast-absorbing eye cream that targets puffiness, dark circles and fine lines for a brighter, more refreshed and youthful eye area.',
+      ingredients:['Hyaluronic Acid','Collagen Peptides'],
+      benefits:['Reduces the look of dark circles and crow\'s feet','Deeply hydrates and smooths the eye area','Brightens and revives tired eyes','Lightweight and gentle for daily use'],
+      howto:['Gently cleanse the area.','Apply a small amount (coin-sized) to ring finger.','Tap lightly around the eye contour — avoid direct contact with eyes.','Use morning and night.'],
+      bestfor:['Dark circles & puffiness','Fine lines around the eyes','Tired, dull eyes','Daily use'],
+      risks:['For external use only.','Avoid direct contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'hydro-face-cream': {
+      name:'Hydro Boosting & Anti-Aging Face Cream', tagline:'Deep Hydration. Skin Renewal. Youthful Glow.',
+      desc:'A powerhouse blend of science and nature to deeply hydrate, nourish and visibly reduce signs of ageing. For smoother, firmer, brighter and more radiant skin.',
+      ingredients:['1.5% Hyaluronic Acid','3% Vitamin B3 (Niacinamide)','Liquorice Extract','Squalane'],
+      benefits:['Intensely hydrates dry and dehydrated skin','Helps improve skin elasticity and firmness','Supports a smoother, more youthful appearance','Helps reduce the appearance of fine lines','Brightens and evens skin tone','Strengthens the skin\'s natural moisture barrier'],
+      howto:['Cleanse and tone the skin.','Apply a small amount to face and neck.','Gently massage until fully absorbed.','Use morning and evening for best results.','Follow with sunscreen during daytime use.'],
+      bestfor:['Normal skin','Dry skin','Combination skin','Mature skin','Dehydrated skin'],
+      risks:['For external use only.','Avoid direct contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation or redness occurs and consult a dermatologist.','Perform a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight.']
+    },
+    'facial-scrub': {
+      name:'Facial Scrub', tagline:'Polish. Renew. Glow. With Rose Geranium & Lavender.',
+      desc:'A gentle yet effective exfoliating treatment that removes dead skin cells, unclogs pores and reveals a smoother, brighter and more radiant complexion.',
+      ingredients:['Rose Geranium Essential Oil','Lavender Essential Oil'],
+      benefits:['Gently exfoliates and removes dead skin cells','Helps unclog pores and refine skin texture','Promotes a brighter, smoother complexion','Reduces the appearance of dullness','Enhances skin radiance and natural glow'],
+      howto:['Cleanse your face and pat skin dry.','Apply a small amount of scrub to damp skin.','Gently massage in circular motions for 1–2 minutes.','Rinse thoroughly with lukewarm water.','Use 2–3 times a week. Follow with a moisturiser.'],
+      bestfor:['Normal skin','Dry skin','Combination skin','Oily skin','Sensitive skin'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Keep out of reach of children.']
+    },
+    'acne-cream': {
+      name:'Acne Cream', tagline:'Clearer Skin. Confident You. With Tea Tree Oil.',
+      desc:'A targeted solution designed to help combat acne, reduce inflammation and promote clearer, healthier-looking skin.',
+      ingredients:['Tea Tree Oil (antibacterial & anti-inflammatory)'],
+      benefits:['Helps reduce acne and prevent new breakouts','Calms inflammation and soothes irritated skin','Helps control excess oil and shine','Supports a healthier skin barrier','Promotes a clearer, smoother complexion'],
+      howto:['Cleanse your face and pat skin dry.','Apply a thin layer to affected areas or the entire face.','Gently massage until fully absorbed.','Use morning and evening for best results.','Follow with sunscreen during the day.'],
+      bestfor:['Acne-prone skin','Oily skin','Combination skin','Adult skin','Skin with blemishes'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation, redness or excessive dryness occurs — consult a dermatologist.','Do a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight.']
+    },
+    'lip-balm': {
+      name:'Lip Balm Tins', tagline:'Nourish. Protect. Soften. Naturally beautiful lips, every day.',
+      desc:'Crafted with natural, high-quality ingredients to deeply nourish, protect and soothe dry, chapped lips.',
+      ingredients:['Argan Oil (rich in fatty acids & Vitamin E)','Beeswax (natural protective barrier)'],
+      benefits:['Deeply hydrates and nourishes dry, chapped lips','Helps repair and protect delicate lips','Locks in moisture for long-lasting softness','Soothes irritation and maintains natural lip health','Perfect for daily use in any season','Compact, travel-friendly tin with screw cap'],
+      howto:['Gently twist open the tin anti-clockwise.','Scoop a small amount using a clean finger.','Apply evenly to lips as often as needed throughout the day.','Close the tin tightly after use to keep it fresh.'],
+      bestfor:['Dry or chapped lips','Daily lip care','All seasons','Travel-friendly use'],
+      risks:['For external use only.','Avoid contact with eyes.','Discontinue use if irritation or redness occurs.','Perform a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight and heat.']
+    }
+  };
+
+  function openSkinInfo(key) {
+    const p = SKIN_INFO[key];
+    if (!p) return;
+    document.getElementById('skinTagline').textContent = p.tagline;
+    document.getElementById('skinName').textContent = p.name;
+    document.getElementById('skinDesc').textContent = p.desc;
+    const ingrHtml = p.ingredients.map(i => `<span class="skin-tag">${i}</span>`).join('');
+    const benHtml = p.benefits.map(b => `<li>${b}</li>`).join('');
+    const howHtml = p.howto.map((s,i) => `<li><strong>${i+1}.</strong> ${s}</li>`).join('');
+    const bestHtml = p.bestfor.map(b => `<span class="skin-tag">${b}</span>`).join('');
+    const riskHtml = p.risks.map(r => `<li>${r}</li>`).join('');
+    document.getElementById('skinBody').innerHTML =
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Key Ingredients</h4><div class="skin-tags">${ingrHtml}</div></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Benefits</h4><ul class="skin-list">${benHtml}</ul></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">How to Use</h4><ul class="skin-list">${howHtml}</ul></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Best For</h4><div class="skin-tags">${bestHtml}</div></div>` +
+      `<div style="background:#fff8f9;border-radius:8px;padding:10px 12px"><h4 style="color:#999;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 6px;">Caution</h4><ul class="skin-list risks">${riskHtml}</ul></div>`;
+    document.getElementById('skinOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSkinModal() {
+    document.getElementById('skinOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function openDisclaimer() {
+    document.getElementById('disclaimerOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDisclaimer() {
+    document.getElementById('disclaimerOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  </script>
 </body>
 </html>
