@@ -606,6 +606,12 @@
     }
 
     .product-btn:hover { background: var(--bark-light); }
+    .special-badge { display:inline-block; background:#e8f5ec; color:#2e7d4f; border:1px solid #a8d5b5; border-radius:20px; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; margin-bottom:6px; }
+    .clearance-price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:680px; margin:20px auto 0; }
+    .clearance-price-card { background:#fff; border-radius:10px; padding:16px 12px; text-align:center; border:1px solid #a8d5b5; }
+    .clearance-price-card .cp-name { font-family:'Cormorant Garamond',serif; font-size:.95rem; color:var(--bark); font-weight:600; margin-bottom:6px; line-height:1.3; }
+    .clearance-price-card .cp-price { font-size:.85rem; color:#2e7d4f; font-weight:700; line-height:1.7; }
+    @media(max-width:600px){ .clearance-price-grid{ grid-template-columns:1fr; max-width:300px; } }
 
     /* ── ORDER SECTION ── */
     .order-section {
@@ -1808,6 +1814,20 @@
       <div class="promo-banner-label" style="color: #3A6B4A;">✨ Ou Etikette Uitverkoping — Terwyl voorraad hou!</div>
       <img src="pamperlang-clearance-banner.jpeg" alt="Pamperlang Uitverkoping — Nuwe Haarreeks Kom" class="promo-banner-img">
       <div class="promo-banner-valid">Dieselfde luukse gehalte · Dieselfde heerlike reuke · Ou etikette teen spesiale pryse — Vanaf 22 Junie</div>
+      <div class="clearance-price-grid">
+        <div class="clearance-price-card">
+          <div class="cp-name">Collagen &amp; Keratin Shampoo</div>
+          <div class="cp-price">100ml — R105<br/>200ml — R125</div>
+        </div>
+        <div class="clearance-price-card">
+          <div class="cp-name">Collagen &amp; Keratin Conditioner</div>
+          <div class="cp-price">100ml — R105<br/>200ml — R125</div>
+        </div>
+        <div class="clearance-price-card">
+          <div class="cp-name">Coffee &amp; Salt Scrub with Rosemary</div>
+          <div class="cp-price">50gr — R85</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1964,9 +1984,10 @@
         <div class="product-img"><img src="product-card-41.jpeg" alt="Coffee Salt Scrub"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Fragrance Free Coffee &amp; Salt Scrub with Rosemary 50gr</div>
           <div class="product-desc">Coffee and salt scrub with Rosemary — removes dead skin cells and improves circulation.</div>
-          <div class="product-footer"><span class="product-price">R115</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R85</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -2207,9 +2228,10 @@
         <div class="product-img"><img src="product-card-09.jpeg" alt="Collagen Keratin Shampoo"/></div>
         <div class="product-info">
           <div class="product-category">Hair Care</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Collagen & Keratin Shampoo</div>
           <div class="product-desc">Collagen and Keratin — repairs, strengthens and adds beautiful shine.</div>
-          <div class="product-footer"><span class="product-price">R135 – R175</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R105 – R125</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -2217,9 +2239,10 @@
         <div class="product-img"><img src="product-card-09.jpeg" alt="Collagen Keratin Conditioner"/></div>
         <div class="product-info">
           <div class="product-category">Hair Care</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Collagen & Keratin Conditioner</div>
           <div class="product-desc">Pairs with the shampoo — deep repair and strengthening conditioner.</div>
-          <div class="product-footer"><span class="product-price">R135 – R175</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R105 – R125</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
