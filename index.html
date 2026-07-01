@@ -607,12 +607,13 @@
 
     .product-btn:hover { background: var(--bark-light); }
     .special-badge { display:inline-block; background:#e8f5ec; color:#2e7d4f; border:1px solid #a8d5b5; border-radius:20px; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; margin-bottom:6px; }
-    .clearance-price-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; max-width:680px; margin:20px auto 0; }
-    .clearance-price-card { flex:0 0 calc(50% - 7px); max-width:280px; }
-    .clearance-price-card { background:#fff; border-radius:10px; padding:16px 12px; text-align:center; border:1px solid #a8d5b5; }
-    .clearance-price-card .cp-name { font-family:'Cormorant Garamond',serif; font-size:.95rem; color:var(--bark); font-weight:600; margin-bottom:6px; line-height:1.3; }
-    .clearance-price-card .cp-price { font-size:.85rem; color:#2e7d4f; font-weight:700; line-height:1.7; }
-    @media(max-width:600px){ .clearance-price-grid{ grid-template-columns:1fr; max-width:300px; } }
+    .spec-two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; max-width:780px; margin:28px auto 0; text-align:left; }
+    .spec-col-title { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--bark); font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #a8d5b5; margin-bottom:14px; }
+    .spec-item { padding:9px 0; border-bottom:1px solid rgba(168,213,181,0.35); }
+    .spec-item:last-child { border-bottom:none; }
+    .spec-name { display:block; font-family:'Cormorant Garamond',serif; font-size:.97rem; font-weight:600; color:#3A2028; margin-bottom:3px; line-height:1.35; }
+    .spec-sizes { font-size:.82rem; color:#2e7d4f; font-weight:700; line-height:1.75; display:block; }
+    @media(max-width:600px){ .spec-two-col{ grid-template-columns:1fr; } }
 
     /* ── ORDER SECTION ── */
     .order-section {
@@ -1812,17 +1813,43 @@
   <!-- CLEARANCE BANNER -->
   <section class="promo-banner-section" id="clearance" style="background: linear-gradient(135deg, #f0f8f2 0%, #f5faf6 60%, #d8ede0 100%);">
     <div class="promo-banner-inner">
-      <div class="promo-banner-label" style="color: #3A6B4A; white-space: nowrap;">Ou Etikette Uitverkoping — Terwyl voorraad hou!</div>
+      <div class="promo-banner-label" style="color: #3A6B4A;">Ou Etikette Uitverkoping — Terwyl voorraad hou!</div>
       <img src="pamperlang-clearance-banner.jpeg" alt="Pamperlang Uitverkoping — Nuwe Haarreeks Kom" class="promo-banner-img">
       <div class="promo-banner-valid">Dieselfde luukse gehalte · Dieselfde heerlike reuke · Ou etikette teen spesiale pryse — Vanaf 22 Junie</div>
-      <div class="clearance-price-grid">
-        <div class="clearance-price-card">
-          <div class="cp-name">Collagen &amp; Keratin Repair Shampoo &amp; Conditioner</div>
-          <div class="cp-price">100ml — R105<br/>200ml — R125</div>
+      <div class="spec-two-col">
+        <div class="spec-col">
+          <div class="spec-col-title">Bath &amp; Body</div>
+          <div class="spec-item">
+            <span class="spec-name">Body Wash / Hand &amp; Body Lotion / Hand Wash</span>
+            <span class="spec-sizes">100ml — R69 &nbsp;·&nbsp; 200ml — R99 &nbsp;·&nbsp; 500ml — R169</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-name">Bath Crystals</span>
+            <span class="spec-sizes">200g — R89 &nbsp;·&nbsp; 500g — R110</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-name">Bubble Bath</span>
+            <span class="spec-sizes">100ml — R75 &nbsp;·&nbsp; 500ml — R120</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-name">Coffee &amp; Salt Scrub with Rosemary</span>
+            <span class="spec-sizes">50gr — R85</span>
+          </div>
         </div>
-        <div class="clearance-price-card">
-          <div class="cp-name">Coffee &amp; Salt Scrub with Rosemary</div>
-          <div class="cp-price">50gr — R85</div>
+        <div class="spec-col">
+          <div class="spec-col-title">Hair Care</div>
+          <div class="spec-item">
+            <span class="spec-name">Activated Charcoal Shampoo &amp; Conditioner</span>
+            <span class="spec-sizes">100ml — R89 &nbsp;·&nbsp; 200ml — R105</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-name">2-in-1 Conditioning Shampoo</span>
+            <span class="spec-sizes">100ml — R79 &nbsp;·&nbsp; 200ml — R99</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-name">Collagen &amp; Keratin Shampoo &amp; Conditioner</span>
+            <span class="spec-sizes">100ml — R105 &nbsp;·&nbsp; 200ml — R125</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1839,7 +1866,6 @@
       <button class="showcase-btn showcase-btn-prev" id="showcasePrev" aria-label="Previous">&#8592;</button>
       <div class="showcase-outer">
         <div class="showcase-track" id="showcaseTrack">
-          <div class="showcase-slide" data-product="Junie Spesiale — Winter Wellness Pakket R370"><img src="junie-specials-winter-wellness.jpeg" alt="Junie Spesiale Winter Wellness Pakket"></div>
           <div class="showcase-slide" data-product="Winter Lyf Pakket R299"><img src="winter-lyf-pakket.jpeg" alt="Winter Lyf Pakket"></div>
           <div class="showcase-slide" data-product="Nuwe Sagte Vroulike Look — Nuwe Labels in Junie!"><img src="nuwe-velsorg-labels.jpeg" alt="Nuwe Pamperlang Labels"></div>
           <div class="showcase-slide" data-product="Pamperlang — New Look"><img src="https://media.portmoni.com/resized/69614/ChatGPT_Image_May_25_2026_09_33_56_AM-thumbnail-1024x1024.png" alt="Pamperlang New Packaging"></div>
@@ -1897,53 +1923,58 @@
     <div class="products-grid">
 
       <!-- BATH & BODY -->
-      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/CINNAMON_BLOSSOM_BODY_WASH-thumbnail-600x600-95.jpg','Bath & Body','Body Wash','R99 – R230','A luxurious body wash enriched with Jojoba Oil and Glycerine — gentle on all skin types, men, women and children.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Long-lasting fragrance · Gentle on all skin types',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R99'],['200ml','R135'],['500ml','R230']])">
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/CINNAMON_BLOSSOM_BODY_WASH-thumbnail-600x600-95.jpg','Bath & Body','Body Wash','R69 – R169','A luxurious body wash enriched with Jojoba Oil and Glycerine — gentle on all skin types, men, women and children.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Long-lasting fragrance · Gentle on all skin types',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
         <div class="product-img"><img src="https://media.portmoni.com/resized/69614/CINNAMON_BLOSSOM_BODY_WASH-thumbnail-600x600-95.jpg" alt="Body Wash"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Body Wash</div>
           <div class="product-desc">Luxurious body wash with Jojoba Oil and Glycerine — available in 11 beautiful fragrances.</div>
-          <div class="product-footer"><span class="product-price">R99 – R230</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/MILK__HONEY_LOTION-thumbnail-600x600-95.jpg','Bath & Body','Hand & Body Lotion','R99 – R230','Jojoba-enriched moisturiser that protects and hydrates your skin all day long.','100ml / 200ml / 500ml','Jojoba Oil · Deep Hydration · Non-greasy',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R99'],['200ml','R135'],['500ml','R230']])">
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/MILK__HONEY_LOTION-thumbnail-600x600-95.jpg','Bath & Body','Hand & Body Lotion','R69 – R169','Jojoba-enriched moisturiser that protects and hydrates your skin all day long.','100ml / 200ml / 500ml','Jojoba Oil · Deep Hydration · Non-greasy',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
         <div class="product-img"><img src="https://media.portmoni.com/resized/69614/MILK__HONEY_LOTION-thumbnail-600x600-95.jpg" alt="Hand & Body Lotion"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Hand & Body Lotion</div>
           <div class="product-desc">Jojoba-enriched moisturiser that protects and hydrates your skin all day long.</div>
-          <div class="product-footer"><span class="product-price">R99 – R230</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/ROSE_VANILLA_HAND_WASH-thumbnail-600x600-95.jpg','Bath & Body','Hand Wash','R99 – R230','Gentle hand wash with Jojoba Oil and Glycerine — suitable for the whole family.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Gentle on skin',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R99'],['200ml','R135'],['500ml','R230']])">
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/ROSE_VANILLA_HAND_WASH-thumbnail-600x600-95.jpg','Bath & Body','Hand Wash','R69 – R169','Gentle hand wash with Jojoba Oil and Glycerine — suitable for the whole family.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Gentle on skin',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
         <div class="product-img"><img src="https://media.portmoni.com/resized/69614/ROSE_VANILLA_HAND_WASH-thumbnail-600x600-95.jpg" alt="Hand Wash"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Hand Wash</div>
           <div class="product-desc">Gentle hand wash with Jojoba Oil and Glycerine — suitable for the whole family.</div>
-          <div class="product-footer"><span class="product-price">R99 – R230</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-05.jpeg','Bath & Body','Bath Crystals','R110 – R135','Luxury bath salts that stimulate circulation, ease muscle cramps, and relieve joint stiffness.','200gr / 500gr','Stimulates circulation · Eases muscle cramps · Deeply relaxing',['Rose','Lemongrass','Lavender','Vanilla','Activated Charcoal Lemongrass','Turmeric','Aloe Cucumber','Aqua','Pink Peony','Rooibos','Cinnamon Blossom','Rose Vanilla','Elegant Grapefruit'],[['200gr','R110'],['500gr','R135']])">
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-05.jpeg','Bath & Body','Bath Crystals','R89 – R110','Luxury bath salts that stimulate circulation, ease muscle cramps, and relieve joint stiffness.','200gr / 500gr','Stimulates circulation · Eases muscle cramps · Deeply relaxing',['Rose','Lemongrass','Lavender','Vanilla','Activated Charcoal Lemongrass','Turmeric','Aloe Cucumber','Aqua','Pink Peony','Rooibos','Cinnamon Blossom','Rose Vanilla','Elegant Grapefruit'],[['200gr','R89'],['500gr','R110']])">
         <div class="product-img"><img src="product-card-05.jpeg" alt="Bath Crystals"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Bath Crystals</div>
           <div class="product-desc">Luxury bath salts — stimulate circulation and ease muscle cramps. 13 fragrances.</div>
-          <div class="product-footer"><span class="product-price">R110 – R135</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R89 – R110</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20240203-WA0037-thumbnail-600x600-95.jpg','Bath & Body','Bubble Bath','R110 – R199','Jojoba-enriched bubble bath — the perfect way to unwind at the end of a long day.','100ml / 500ml','Jojoba Oil · Rich bubbles · Relaxing',['Lavender','Rose','Vanilla','Pink Peony'],[['100ml','R110'],['500ml','R199']])">
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20240203-WA0037-thumbnail-600x600-95.jpg','Bath & Body','Bubble Bath','R75 – R120','Jojoba-enriched bubble bath — the perfect way to unwind at the end of a long day.','100ml / 500ml','Jojoba Oil · Rich bubbles · Relaxing',['Lavender','Rose','Vanilla','Pink Peony'],[['100ml','R75'],['500ml','R120']])">
         <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20240203-WA0037-thumbnail-600x600-95.jpg" alt="Bubble Bath"/></div>
         <div class="product-info">
           <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Bubble Bath</div>
           <div class="product-desc">Luxurious Jojoba-enriched bubble bath — the perfect way to unwind.</div>
-          <div class="product-footer"><span class="product-price">R110 – R199</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R75 – R120</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -2191,33 +2222,36 @@
       </div>
 
       <!-- HAIR CARE -->
-      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Shampoo','R118 – R155','SLS-free shampoo with activated charcoal and natural essential oils — deep cleanses without stripping.','200ml / 500ml','Activated Charcoal · SLS-free · Natural essential oils',null,[['200ml','R118'],['500ml','R155']])">
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Shampoo','R89 – R105','SLS-free shampoo with activated charcoal and natural essential oils — deep cleanses without stripping.','100ml / 200ml','Activated Charcoal · SLS-free · Natural essential oils',null,[['100ml','R89'],['200ml','R105']])">
         <div class="product-img"><img src="product-card-07.jpeg" alt="Charcoal Shampoo"/></div>
         <div class="product-info">
           <div class="product-category">Hair Care</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Activated Charcoal Shampoo</div>
           <div class="product-desc">SLS-free with activated charcoal — deep cleanses without stripping your hair.</div>
-          <div class="product-footer"><span class="product-price">R118 – R155</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R89 – R105</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Conditioner','R118 – R155','Hyaluronic Acid conditioner — maintains moisture, combats dandruff and leaves hair shiny.','200ml / 500ml','Activated Charcoal · Hyaluronic Acid · Anti-dandruff · Moisture',null,[['200ml','R118'],['500ml','R155']])">
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Conditioner','R89 – R105','Hyaluronic Acid conditioner — maintains moisture, combats dandruff and leaves hair shiny.','100ml / 200ml','Activated Charcoal · Hyaluronic Acid · Anti-dandruff · Moisture',null,[['100ml','R89'],['200ml','R105']])">
         <div class="product-img"><img src="product-card-07.jpeg" alt="Charcoal Conditioner"/></div>
         <div class="product-info">
           <div class="product-category">Hair Care</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">Activated Charcoal Conditioner</div>
           <div class="product-desc">Hyaluronic Acid conditioner — maintains moisture and combats dandruff.</div>
-          <div class="product-footer"><span class="product-price">R118 – R155</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R89 – R105</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-08.jpeg','Hair Care','2-in-1 Conditioning Shampoo','R110 – R149','Jojoba-enriched shampoo and conditioner in one — gentle and moisturising for all hair types.','100ml / 200ml','Jojoba Oil · 2-in-1 formula · All hair types',['Orange Lavender','Aloe Cucumber','Elegant Grapefruit','Rooibos'],[['100ml','R110'],['200ml','R149']])">
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-08.jpeg','Hair Care','2-in-1 Conditioning Shampoo','R79 – R99','Jojoba-enriched shampoo and conditioner in one — gentle and moisturising for all hair types.','100ml / 200ml','Jojoba Oil · 2-in-1 formula · All hair types',['Orange Lavender','Aloe Cucumber','Elegant Grapefruit','Rooibos'],[['100ml','R79'],['200ml','R99']])">
         <div class="product-img"><img src="product-card-08.jpeg" alt="2-in-1 Shampoo"/></div>
         <div class="product-info">
           <div class="product-category">Hair Care</div>
+          <span class="special-badge">✨ On Special</span>
           <div class="product-name">2-in-1 Conditioning Shampoo</div>
           <div class="product-desc">Jojoba-enriched shampoo and conditioner in one — 4 fragrances available.</div>
-          <div class="product-footer"><span class="product-price">R110 – R149</span><button class="product-btn">View</button></div>
+          <div class="product-footer"><span class="product-price">R79 – R99</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -2314,12 +2348,12 @@
         </div>
       </div>
 
-      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-44.jpeg','Health &amp; Wellness','Pure Bovine Collagen Capsules 120','R320','Hydrolyzed Pure Bovine Collagen capsules — supports skin elasticity, joint health, hair and nail strength.','120 capsules','Pure Bovine Collagen · Hydrolyzed · Skin elasticity · Joint health · Hair &amp; nails')">
-        <div class="product-img"><img src="product-card-44.jpeg" alt="Pure Bovine Collagen Capsules"/></div>
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-44.jpeg','Health &amp; Wellness','Collagen Powder 150g','R320','Pamperlang Collagen Powder — Pure Bovine Collagen to support healthy skin, hair, nails and joints. 150g.','150g','Bovine Collagen · Powder · Skin · Hair &amp; nails · Joint support')">
+        <div class="product-img"><img src="product-card-44.jpeg" alt="Collagen Powder 150g"/></div>
         <div class="product-info">
           <div class="product-category">Health &amp; Wellness</div>
-          <div class="product-name">Pure Bovine Collagen Capsules 120</div>
-          <div class="product-desc">Hydrolyzed Pure Bovine Collagen — supports skin, joints, hair and nails. 120 capsules.</div>
+          <div class="product-name">Collagen Powder 150g</div>
+          <div class="product-desc">Pamperlang Collagen Powder — Pure Bovine Collagen to support healthy skin, hair, nails and joints. 150g.</div>
           <div class="product-footer"><span class="product-price">R320</span><button class="product-btn">View</button></div>
         </div>
       </div>
@@ -2899,7 +2933,7 @@
         'Hunger Stop 60 Capsules': 'product-card-30.jpeg',
         'Collagen Powder 150g': 'product-card-44.jpeg',
         'Collagen Capsules Packet 120': 'product-card-44.jpeg',
-        'Pure Bovine Collagen Capsules 120': 'product-card-44.jpeg',
+        'Collagen Powder 150g': 'product-card-44.jpeg',
         'Anxiety & Headache Buster Roller 10ml': 'product-card-45.jpeg',
         'Cortisol Herbal Support Drops': 'product-card-33.jpeg',
         'Monalisa — Female Hormone Support': 'product-card-34.jpeg',
