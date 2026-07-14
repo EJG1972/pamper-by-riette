@@ -1575,6 +1575,7 @@
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
+      overflow-y: auto;
     }
     .showcase-lightbox.open { display: flex; }
     .showcase-lb-inner {
@@ -1585,13 +1586,7 @@
       max-width: 480px;
       width: 90%;
     }
-    .showcase-lb-inner img {
-      width: 100%;
-      max-height: 78vh;
-      border-radius: 18px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-      object-fit: contain;
-    }
+    .showcase-lb-inner img { width: auto; max-width: 100%; max-height: calc(100vh - 17rem); min-height: 200px; border-radius: 18px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); object-fit: contain; }
     .showcase-lb-actions {
       background: rgba(255,255,255,0.08);
       border-radius: 16px;
