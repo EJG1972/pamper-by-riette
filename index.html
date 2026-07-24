@@ -1194,13 +1194,11 @@
     #cartForm { display: none; }
     #cartTotalRow { display: none; }
     #cartSendBtn { display: none !important; }
-    #cartEmailBtn { display: none !important; }
     .cart-note { display: none; }
 
     .cart-drawer.order-step #cartForm { display: block; }
     .cart-drawer.order-step #cartTotalRow { display: flex; }
     .cart-drawer.order-step #cartSendBtn { display: flex !important; }
-    .cart-drawer.order-step #cartEmailBtn { display: flex !important; }
     .cart-drawer.order-step .cart-note { display: block; }
 
     .cart-place-order-btn {
@@ -1290,27 +1288,6 @@
       margin-top: 0.4rem;
       line-height: 1.6;
     }
-
-    .btn-email {
-      background: #3A2028;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: all 0.25s;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      padding: 1rem;
-      margin-top: 0.6rem;
-    }
-
-    .btn-email:hover { background: var(--bark); }
 
     /* Added toast notification */
     .added-notif {
@@ -2703,11 +2680,6 @@
           <div class="contact-card-value"><a href="https://wa.me/27712305401">+27 71 230 5401</a></div>
         </div>
         <div class="contact-card">
-          <div class="contact-card-icon">📧</div>
-          <div class="contact-card-label">Email</div>
-          <div class="contact-card-value" style="text-align:center; word-break:break-all;"><a href="mailto:thehustlehubsa@outlook.com">thehustlehubsa@outlook.com</a></div>
-        </div>
-        <div class="contact-card">
           <div class="contact-card-icon">📍</div>
           <div class="contact-card-label">Based In</div>
           <div class="contact-card-value">Komani / Queenstown, Eastern Cape</div>
@@ -2725,7 +2697,7 @@
   <footer>
     <div style="text-align:center;padding:8px 0 0;"><button class="disclaimer-btn" onclick="openDisclaimer()">Disclaimer</button></div>
     <p><strong>Pamper by Riette</strong> — Official Pamperlang Agent · Komani / Queenstown, Eastern Cape</p>
-    <p style="margin-top:0.5rem;">Questions? <a href="https://wa.me/27712305401">WhatsApp me</a> · <a href="mailto:thehustlehubsa@outlook.com">thehustlehubsa@outlook.com</a></p>
+    <p style="margin-top:0.5rem;">Questions? <a href="https://wa.me/27712305401">WhatsApp me</a></p>
     <p style="margin-top:0.5rem; opacity:0.5;">Products by <a href="https://www.pamperlangskoonheid.co.za" target="_blank">Pamperlang Skoonheid</a></p>
   
   </footer>
@@ -2799,11 +2771,7 @@
         Send via WhatsApp
       </a>
 
-      <a id="cartEmailBtn" href="#" onclick="sendViaEmail(event)" class="btn-email">
-        ✉️ Send via Email
-      </a>
-
-      <p class="cart-note">Choose how to send your order. Riette will confirm availability, final price & delivery.</p>
+      <p class="cart-note">Riette will confirm availability, final price &amp; delivery.</p>
     </div>
   </div>
 
@@ -3154,15 +3122,7 @@
       window.open(`https://wa.me/27712305401?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    function sendViaEmail(e) {
-      e.preventDefault();
-      const msg = buildOrderMessage();
-      if (!msg) return;
-      const subject = encodeURIComponent('New Order — Pamper by Riette');
-      window.location.href = `mailto:thehustlehubsa@outlook.com?subject=${subject}&body=${encodeURIComponent(msg)}`;
-    }
-
-    const backToTopBtn = document.getElementById('backToTop');
+const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTopBtn.classList.toggle('visible', window.scrollY > 300);
     });
