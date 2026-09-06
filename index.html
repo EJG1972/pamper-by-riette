@@ -533,6 +533,56 @@
     .tab-btn.active { color: var(--bark); }
     .tab-btn.active::after { transform: scaleX(1); }
 
+    /* ── PRODUCT SEARCH ── */
+    .product-search-wrap {
+      max-width: 420px;
+      margin: 0 auto 1.6rem;
+      position: relative;
+    }
+    .product-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.6rem;
+      border: 1px solid var(--sand);
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--warm-white);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .product-search-input:focus { border-color: var(--rose); }
+    .product-search-input::placeholder { color: var(--text-light); }
+    .product-search-icon {
+      position: absolute;
+      left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+    .product-search-clear {
+      position: absolute;
+      right: 0.6rem; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.2rem 0.4rem;
+      display: none;
+    }
+    .product-search-clear.show { display: block; }
+    .product-search-no-results {
+      display: none;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      padding: 2.5rem 1rem;
+    }
+    .product-search-no-results.show { display: block; }
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -1910,6 +1960,11 @@
       <h2 class="section-title">All Pamperlang Products</h2>
       <p class="section-sub">Browse the full Pamperlang range and WhatsApp me to place your order — I'll handle the rest.</p>
     </div>
+    <div class="product-search-wrap">
+      <span class="product-search-icon">🔍</span>
+      <input type="text" class="product-search-input" id="productSearchInput" placeholder="Search products…" oninput="searchProducts(this.value)" aria-label="Search products">
+      <button class="product-search-clear" id="productSearchClear" onclick="clearProductSearch()" aria-label="Clear search">✕</button>
+    </div>
     <div class="category-tabs-wrap">
       <div class="category-tabs">
         <button class="tab-btn active" onclick="filterProducts('all', this)">All Products</button>
@@ -1925,6 +1980,7 @@
         <button class="tab-btn" onclick="filterProducts('Combos & Gifts', this)">Combos & Gifts</button>
       </div>
     </div>
+    <div class="product-search-no-results" id="productSearchNoResults">No products match your search — try a different word, or clear the search to browse by category.</div>
     <div class="products-grid">
 
       <!-- BATH & BODY -->
@@ -2923,12 +2979,40 @@
 
   <script>
     // ── FILTER ──
+    let currentCategory = 'all';
+    let currentSearch = '';
+
     function filterProducts(category, btn) {
+      currentCategory = category;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
+      applyProductFilters();
+    }
+
+    function searchProducts(term) {
+      currentSearch = term.toLowerCase().trim();
+      document.getElementById('productSearchClear').classList.toggle('show', currentSearch.length > 0);
+      applyProductFilters();
+    }
+
+    function clearProductSearch() {
+      const input = document.getElementById('productSearchInput');
+      input.value = '';
+      searchProducts('');
+      input.focus();
+    }
+
+    function applyProductFilters() {
+      let visibleCount = 0;
       document.querySelectorAll('.product-card').forEach(card => {
-        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+        const matchesCategory = currentCategory === 'all' || card.dataset.category === currentCategory;
+        const haystack = (card.querySelector('.product-name')?.textContent + ' ' + card.querySelector('.product-desc')?.textContent).toLowerCase();
+        const matchesSearch = currentSearch === '' || haystack.includes(currentSearch);
+        const visible = matchesCategory && matchesSearch;
+        card.style.display = visible ? 'block' : 'none';
+        if (visible) visibleCount++;
       });
+      document.getElementById('productSearchNoResults').classList.toggle('show', visibleCount === 0);
     }
 
     // ── MODAL ──
