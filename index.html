@@ -457,6 +457,19 @@
       font-weight: 600;
     }
 
+    .promo-countdown {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 18px;
+      border-radius: 50px;
+      background: var(--bark);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
     /* ── SECTION HELPERS ── */
     .section-tag {
       font-size: 0.7rem;
@@ -582,6 +595,62 @@
       padding: 2.5rem 1rem;
     }
     .product-search-no-results.show { display: block; }
+
+    /* ── PRICE FILTER CHIPS ── */
+    .price-chips-wrap {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 0 1.6rem;
+    }
+    .price-chip {
+      background: var(--warm-white);
+      border: 1.5px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.4rem 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .price-chip:hover { border-color: var(--rose); color: var(--bark); }
+    .price-chip.active { background: var(--bark); border-color: var(--bark); color: #fff; }
+
+    /* ── WISHLIST ── */
+    .wishlist-heart {
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(139,58,88,0.18);
+      z-index: 2;
+      transition: transform 0.15s;
+    }
+    .wishlist-heart:hover { transform: scale(1.12); }
+    .wishlist-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--sand);
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .wishlist-item:last-child { border-bottom: none; }
 
     .products-grid {
       display: grid;
@@ -1798,6 +1867,12 @@
       <li><a href="#how-to-order">How to Order</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
+        <button class="cart-nav-btn" onclick="openWishlist()">
+          🤍 Favourites
+          <span class="cart-badge" id="wishlistBadge" style="display:none;">0</span>
+        </button>
+      </li>
+      <li>
         <button class="cart-nav-btn" onclick="openCart()">
           🛍️ My Order
           <span class="cart-badge" id="cartBadge">0</span>
@@ -1806,6 +1881,9 @@
       <li><a href="#products" class="nav-cta">Order Now</a></li>
     </ul>
     <div class="nav-mobile-right">
+      <button class="cart-mobile-btn" onclick="openWishlist()">
+        🤍 <span class="cart-badge" id="wishlistBadgeMobile" style="display:none;">0</span>
+      </button>
       <button class="cart-mobile-btn" onclick="openCart()">
         🛍️ <span class="cart-badge" id="cartBadgeMobile">0</span>
       </button>
@@ -1843,12 +1921,13 @@
   <!-- Erfenisdag Banner (own row, 5-day sale) -->
   <section class="promo-banner-section" id="erfenisdag-banner" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%);">
     <div style="max-width:400px; margin:0 auto; text-align:center;">
-      <div class="promo-banner-label" style="color: #2D5F3F; font-size: clamp(0.6rem, 2.8vw, 1.1rem);">🇿🇦 🔥 Erfenisdag — 10% Off Any Item 🔥 🇿🇦</div>
+      <div class="promo-banner-label" style="color: #2D5F3F; font-size: clamp(0.6rem, 2.8vw, 1.1rem);">🔥 🇿🇦 Erfenisdag — 10% Off Any Item 🇿🇦 🔥</div>
       <img src="erfenisdag-braai-10-off.jpeg" alt="Erfenisdag Braaidag — 10% Afslag op enige item, geldig 21 tot 25 September" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
       <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
         <a href="#products" class="btn-primary">Shop the Sale</a>
       </div>
       <div class="promo-banner-valid">Valid 21–25 September</div>
+      <div class="promo-countdown" id="erfenisdagCountdown" data-until="2026-09-25T23:59:59+02:00">⏰ …</div>
     </div>
   </section>
 
@@ -1958,6 +2037,12 @@
       <span class="product-search-icon">🔍</span>
       <input type="text" class="product-search-input" id="productSearchInput" placeholder="Search products…" oninput="searchProducts(this.value)" aria-label="Search products">
       <button class="product-search-clear" id="productSearchClear" onclick="clearProductSearch()" aria-label="Clear search">✕</button>
+    </div>
+    <div class="price-chips-wrap">
+      <button class="price-chip active" onclick="filterPrice('all', this)">All Prices</button>
+      <button class="price-chip" onclick="filterPrice('0-100', this)">Under R100</button>
+      <button class="price-chip" onclick="filterPrice('100-200', this)">R100 – R200</button>
+      <button class="price-chip" onclick="filterPrice('200-99999', this)">R200+</button>
     </div>
     <div class="category-tabs-wrap">
       <div class="category-tabs">
@@ -2855,6 +2940,24 @@
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
+  <!-- Wishlist -->
+  <div class="cart-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
+  <div class="cart-drawer" id="wishlistDrawer">
+    <div class="cart-header">
+      <div>
+        <h3>My Favourites</h3>
+        <div class="cart-header-sub">Products you've saved to look at later</div>
+      </div>
+      <button class="cart-close" onclick="closeWishlist()">✕</button>
+    </div>
+    <div class="cart-items" id="wishlistItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🤍</div>
+        <p>No favourites yet.<br/>Tap the heart on any product to save it here.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Cart -->
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
   <div class="cart-drawer" id="cartDrawer">
@@ -2992,7 +3095,13 @@
         const matchesCategory = currentCategory === 'all' || card.dataset.category === currentCategory;
         const haystack = (card.querySelector('.product-name')?.textContent + ' ' + card.querySelector('.product-desc')?.textContent).toLowerCase();
         const matchesSearch = currentSearch === '' || haystack.includes(currentSearch);
-        const visible = matchesCategory && matchesSearch;
+        let matchesPrice = true;
+        if (typeof currentPriceRange !== 'undefined' && currentPriceRange !== 'all') {
+          const parts = currentPriceRange.split('-').map(Number);
+          const minPrice = getCardMinPrice(card);
+          matchesPrice = minPrice >= parts[0] && minPrice <= parts[1];
+        }
+        const visible = matchesCategory && matchesSearch && matchesPrice;
         card.style.display = visible ? 'block' : 'none';
         if (visible) visibleCount++;
       });
@@ -3455,6 +3564,145 @@ const backToTopBtn = document.getElementById('backToTop');
       goTo(0);
       resetAuto();
     })();
+
+    // ── COUNTDOWN ──
+    function initCountdowns() {
+      document.querySelectorAll('.promo-countdown[data-until]').forEach(function(el) {
+        const until = new Date(el.dataset.until).getTime();
+        function update() {
+          const diff = until - Date.now();
+          if (diff <= 0) { el.textContent = 'Sale has ended'; return; }
+          const days = Math.floor(diff / 86400000);
+          const hours = Math.floor((diff % 86400000) / 3600000);
+          const minutes = Math.floor((diff % 3600000) / 60000);
+          if (days > 0) el.textContent = '⏰ ' + days + 'd ' + hours + 'h left';
+          else if (hours > 0) el.textContent = '⏰ ' + hours + 'h ' + minutes + 'm left';
+          else el.textContent = '⏰ ' + minutes + 'm left';
+        }
+        update();
+        setInterval(update, 60000);
+      });
+    }
+    initCountdowns();
+
+    // ── PRICE FILTER ──
+    let currentPriceRange = 'all';
+
+    function getCardMinPrice(card) {
+      const el = card.querySelector('.product-price');
+      if (!el) return 0;
+      const nums = (el.textContent.match(/\d+/g) || []).map(Number);
+      return nums.length ? Math.min.apply(null, nums) : 0;
+    }
+
+    function filterPrice(range, btn) {
+      currentPriceRange = range;
+      document.querySelectorAll('.price-chip').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      applyProductFilters();
+    }
+
+    // ── WISHLIST ──
+    function getWishlist() {
+      try { return JSON.parse(localStorage.getItem('pamperlangWishlist') || '[]'); } catch (e) { return []; }
+    }
+    function setWishlist(list) {
+      try { localStorage.setItem('pamperlangWishlist', JSON.stringify(list)); } catch (e) {}
+    }
+    function isWishlisted(name) { return getWishlist().indexOf(name) !== -1; }
+
+    function toggleWishlist(name, btn) {
+      let list = getWishlist();
+      const idx = list.indexOf(name);
+      const nowSaved = idx === -1;
+      if (idx !== -1) list.splice(idx, 1); else list.push(name);
+      setWishlist(list);
+      updateWishlistBadge();
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        const n = card.querySelector('.product-name');
+        if (n && n.textContent.trim() === name) {
+          const heart = card.querySelector('.wishlist-heart');
+          if (heart) heart.textContent = nowSaved ? '❤️' : '🤍';
+        }
+      });
+    }
+
+    function updateWishlistBadge() {
+      const count = getWishlist().length;
+      ['wishlistBadge', 'wishlistBadgeMobile'].forEach(function(id) {
+        const badge = document.getElementById(id);
+        if (badge) { badge.textContent = count; badge.style.display = count > 0 ? 'flex' : 'none'; }
+      });
+    }
+
+    function initWishlistHearts() {
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        const imgWrap = card.querySelector('.product-img');
+        const name = card.querySelector('.product-name');
+        if (!imgWrap || !name || imgWrap.querySelector('.wishlist-heart')) return;
+        const productName = name.textContent.trim();
+        const btn = document.createElement('button');
+        btn.className = 'wishlist-heart';
+        btn.setAttribute('aria-label', 'Save to favourites');
+        btn.type = 'button';
+        btn.textContent = isWishlisted(productName) ? '❤️' : '🤍';
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleWishlist(productName, btn);
+        });
+        imgWrap.appendChild(btn);
+      });
+    }
+    initWishlistHearts();
+    updateWishlistBadge();
+
+    function renderWishlist() {
+      const list = getWishlist();
+      const container = document.getElementById('wishlistItems');
+      if (list.length === 0) {
+        container.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🤍</div><p>No favourites yet.<br/>Tap the heart on any product to save it here.</p></div>';
+        return;
+      }
+      container.innerHTML = list.map(function(name) {
+        const safe = name.replace(/'/g, "\\'");
+        return '<div class="wishlist-item" onclick="jumpToProduct(\'' + safe + '\')">' +
+          '<span>' + name + '</span>' +
+          '<button class="cart-item-remove" onclick="event.stopPropagation(); toggleWishlist(\'' + safe + '\'); renderWishlist();">Remove</button>' +
+          '</div>';
+      }).join('');
+    }
+
+    function openWishlist() {
+      renderWishlist();
+      document.getElementById('wishlistOverlay').classList.add('open');
+      document.getElementById('wishlistDrawer').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWishlist() {
+      document.getElementById('wishlistOverlay').classList.remove('open');
+      document.getElementById('wishlistDrawer').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function jumpToProduct(name) {
+      closeWishlist();
+      filterProducts('all', null);
+      filterPrice('all', null);
+      setTimeout(function() {
+        const cards = document.querySelectorAll('.product-card');
+        let found = null;
+        cards.forEach(function(card) {
+          if (found) return;
+          const n = card.querySelector('.product-name');
+          if (n && n.textContent.trim() === name) found = card;
+        });
+        if (found) {
+          found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(function() { found.click(); }, 500);
+        }
+      }, 200);
+    }
 
   </script>
   <!-- Skincare Info Modal -->
