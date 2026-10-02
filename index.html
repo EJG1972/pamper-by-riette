@@ -1924,12 +1924,12 @@
       <div style="flex:1 1 300px; max-width:520px; text-align:center;">
         <div class="promo-banner-label" style="color:#2D5F3F; white-space:normal;">✨ New Perfume Rollers — R80 each</div>
         <img src="perfume-rollers-graphic.jpeg" alt="New natural perfume rollers — Jojoba oil base, alcohol free. R80 each, pack of 5 R299" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
-        <a href="#products" onclick="filterProducts('Perfumes', null)" class="btn-primary">Shop Perfume Rollers</a>
+        <a href="#products" onclick="showCategoryTab('Perfumes')" class="btn-primary">Shop Perfume Rollers</a>
       </div>
       <div style="flex:1 1 300px; max-width:520px; text-align:center;">
         <div class="promo-banner-label" style="color:#2D5F3F; white-space:normal;">✨ New 10ml Rollers — Castor Oil &amp; Retinol</div>
         <img src="castor-retinol-rollers-graphic.jpeg" alt="Castor Oil R50 and Natural Retinol R159, now in handy 10ml rollers" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
-        <a href="#products" onclick="filterProducts('all', null)" class="btn-primary">Shop 10ml Rollers</a>
+        <a href="#products" onclick="showRollers()" class="btn-primary">Shop 10ml Rollers</a>
       </div>
     </div>
   </section>
@@ -2255,14 +2255,24 @@
         </div>
       </div>
 
-      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-21.jpeg','Facial Skincare','Natural Retinol','R159 – R249','Natural retinol with Jojoba and Bakuchiol — anti-aging benefits without the harshness of synthetic retinol. Now also in a handy 10ml roller.','10ml roller / 30ml','Bakuchiol · Jojoba Oil · Anti-aging · Gentle formula',null,[['10ml roller','R159'],['30ml','R249']])">
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-21.jpeg','Facial Skincare','Natural Retinol 30ml','R249','Natural retinol with Jojoba and Bakuchiol — anti-aging benefits without the harshness of synthetic retinol.','30ml','Bakuchiol · Jojoba Oil · Anti-aging · Gentle formula')">
         <div class="product-img"><img src="product-card-21.jpeg" alt="Natural Retinol"/></div>
         <div class="product-info">
           <div class="product-category">Facial Skincare</div>
-          <span class="special-badge">✨ New 10ml roller</span>
-          <div class="product-name">Natural Retinol</div>
-          <div class="product-desc">Bakuchiol and Jojoba Oil — anti-aging benefits without the harshness of synthetic retinol. Now in a 10ml roller too.</div>
-          <div class="product-footer"><span class="product-price">R159 – R249</span><button class="product-btn">View</button></div>
+          <div class="product-name">Natural Retinol 30ml</div>
+          <div class="product-desc">Bakuchiol and Jojoba Oil — anti-aging benefits without the harshness of synthetic retinol.</div>
+          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('castor-retinol-rollers-10ml.jpeg','Facial Skincare','Natural Retinol 10ml Roller','R159','Natural retinol with Jojoba and Bakuchiol in a handy 10ml roller — anti-aging benefits without the harshness of synthetic retinol. Perfect for your handbag, travel or daily routine.','10ml roller','Bakuchiol · Jojoba Oil · Anti-aging · Gentle formula · Handbag friendly')">
+        <div class="product-img"><img src="castor-retinol-rollers-10ml.jpeg" alt="Natural Retinol 10ml Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ New</span>
+          <div class="product-name">Natural Retinol 10ml Roller</div>
+          <div class="product-desc">Bakuchiol and Jojoba Oil in a handy 10ml roller — gentle anti-aging on the go.</div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -2429,14 +2439,24 @@
         </div>
       </div>
 
-      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-18.jpeg','Health & Wellness','Castor Oil','R50 – R139','A miracle multi-use oil — promotes hair growth, moisturises skin, and nourishes nails. Now also in a handy 10ml roller.','10ml roller / 50ml / 100ml / 200ml','Pure Castor Oil · Hair growth · Skin · Nails',null,[['10ml roller','R50'],['50ml','R69'],['100ml','R99'],['200ml','R139']])">
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-18.jpeg','Health & Wellness','Castor Oil','R69 – R139','A miracle multi-use oil — promotes hair growth, moisturises skin, and nourishes nails.','50ml / 100ml / 200ml','Pure Castor Oil · Hair growth · Skin · Nails',null,[['50ml','R69'],['100ml','R99'],['200ml','R139']])">
         <div class="product-img"><img src="product-card-18.jpeg" alt="Castor Oil"/></div>
         <div class="product-info">
           <div class="product-category">Health & Wellness</div>
-          <span class="special-badge">✨ New 10ml roller</span>
           <div class="product-name">Castor Oil</div>
-          <div class="product-desc">Multi-use miracle oil — promotes hair growth, moisturises skin and nails. Now in a 10ml roller too.</div>
-          <div class="product-footer"><span class="product-price">R50 – R139</span><button class="product-btn">View</button></div>
+          <div class="product-desc">Multi-use miracle oil — promotes hair growth, moisturises skin and nails.</div>
+          <div class="product-footer"><span class="product-price">R69 – R139</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('castor-retinol-rollers-10ml.jpeg','Health & Wellness','Castor Oil 10ml Roller','R50','Our miracle multi-use Castor Oil in a handy 10ml roller — promotes hair growth, moisturises skin and nourishes nails. Perfect for your handbag, travel or daily routine.','10ml roller','Pure Castor Oil · Hair growth · Skin · Nails · Handbag friendly')">
+        <div class="product-img"><img src="castor-retinol-rollers-10ml.jpeg" alt="Castor Oil 10ml Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <span class="special-badge">✨ New</span>
+          <div class="product-name">Castor Oil 10ml Roller</div>
+          <div class="product-desc">Our favourite Castor Oil in a handy 10ml roller — small bottle, big pamper.</div>
+          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button></div>
         </div>
       </div>
 
@@ -3171,7 +3191,7 @@
         'Collagen Day / Night Cream': 'collagen-day-night-cream-card.jpeg',
         'Collagen Eye Cream': 'collagen-eye-cream-card.jpeg',
         'Collagen Skincare Sample Pack': 'product-card-19.jpeg',
-        'Natural Retinol': 'product-card-21.jpeg',
+        'Natural Retinol 30ml': 'product-card-21.jpeg',
         'Tissue Oil for Face & Body 50ml': 'product-card-22.jpeg',
         'Facial Toner with Witch Hazel 100ml': 'product-card-23.jpeg',
         'Wrinkle Filler Serum 30ml': 'product-card-24.jpeg',
@@ -3708,6 +3728,28 @@ const backToTopBtn = document.getElementById('backToTop');
       document.getElementById('wishlistOverlay').classList.remove('open');
       document.getElementById('wishlistDrawer').classList.remove('open');
       document.body.style.overflow = '';
+    }
+
+    function resetProductFilters() {
+      const i = document.getElementById('productSearchInput');
+      if (i) i.value = '';
+      currentSearch = '';
+      document.getElementById('productSearchClear').classList.remove('show');
+      filterPrice('all', document.querySelector('.price-chip'));
+    }
+
+    function showCategoryTab(cat) {
+      resetProductFilters();
+      const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.textContent.trim() === cat);
+      filterProducts(cat, btn || null);
+    }
+
+    function showRollers() {
+      filterProducts('all', document.querySelector('.tab-btn'));
+      filterPrice('all', document.querySelector('.price-chip'));
+      const i = document.getElementById('productSearchInput');
+      if (i) i.value = 'roller';
+      searchProducts('roller');
     }
 
     function jumpToProduct(name) {
