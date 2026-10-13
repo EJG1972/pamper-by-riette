@@ -1918,6 +1918,17 @@
     </div>
   </section>
 
+  <!-- Mid-Month R99 Flash Sale (14-18 Oct 2026) -->
+  <section class="promo-banner-section" id="flash-sale-banner" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%); padding-bottom: 1.5rem;">
+    <div style="max-width:440px; margin:0 auto; text-align:center;">
+      <div class="promo-banner-label" style="color:#8B3A58; white-space:normal;">🔥 Mid-Month R99 Flash Sale 🔥</div>
+      <img src="flash-sale-r99.jpeg" alt="Mid-Maand R99 Flash Sale — 10 essential Pamperlang products, only R99 each, 14 to 18 October" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
+      <a href="#products" onclick="showFlashSale()" class="btn-primary">See the 10 R99 Products</a>
+      <div class="promo-banner-valid">Starts 14 October — valid 14–18 October</div>
+      <div class="promo-countdown" id="flashSaleCountdown" data-from="2026-10-14T00:00:00+02:00" data-until="2026-10-18T23:59:59+02:00">⏰ …</div>
+    </div>
+  </section>
+
   <!-- New 10ml Rollers (top of page) -->
   <section class="promo-banner-section" id="new-rollers-row" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%); padding-bottom: 1.5rem;">
     <div style="display:flex; gap:2rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:1100px; margin:0 auto;">
@@ -3158,8 +3169,10 @@
     // ── FILTER ──
     let currentCategory = 'all';
     let currentSearch = '';
+    let currentFlashOnly = false;
 
     function filterProducts(category, btn) {
+      currentFlashOnly = false;
       currentCategory = category;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
@@ -3191,7 +3204,8 @@
           const minPrice = getCardMinPrice(card);
           matchesPrice = minPrice >= parts[0] && minPrice <= parts[1];
         }
-        const visible = matchesCategory && matchesSearch && matchesPrice;
+        const matchesFlash = !currentFlashOnly || !!FLASH_SALE.items[(card.querySelector('.product-name')?.textContent || '').trim()];
+        const visible = matchesCategory && matchesSearch && matchesPrice && matchesFlash;
         card.style.display = visible ? 'block' : 'none';
         if (visible) visibleCount++;
       });
@@ -3202,6 +3216,8 @@
     let currentItem = { img: '', name: '', price: '', fragrances: [], sizeOptions: [] };
 
     function openModal(img, category, name, price, desc, size, benefits, fragrances, sizeOptions, rotation) {
+      const fl = flashModalArgs(name, price, sizeOptions);
+      price = fl.price; sizeOptions = fl.sizeOptions;
       currentItem = { img, name, price, fragrances: fragrances || [], sizeOptions: sizeOptions || [] };
 
       document.getElementById('modalCategory').textContent = category;
@@ -3664,7 +3680,14 @@ const backToTopBtn = document.getElementById('backToTop');
     function initCountdowns() {
       document.querySelectorAll('.promo-countdown[data-until]').forEach(function(el) {
         const until = new Date(el.dataset.until).getTime();
+        const from = el.dataset.from ? new Date(el.dataset.from).getTime() : 0;
         function update() {
+          if (from && Date.now() < from) {
+            const d0 = from - Date.now();
+            const dd = Math.floor(d0 / 86400000), hh = Math.floor((d0 % 86400000) / 3600000), mm = Math.floor((d0 % 3600000) / 60000);
+            el.textContent = '⏰ Starts in ' + (dd > 0 ? dd + 'd ' + hh + 'h' : hh > 0 ? hh + 'h ' + mm + 'm' : mm + 'm');
+            return;
+          }
           const diff = until - Date.now();
           if (diff <= 0) { el.textContent = 'Sale has ended'; return; }
           const days = Math.floor(diff / 86400000);
@@ -3778,6 +3801,69 @@ const backToTopBtn = document.getElementById('backToTop');
       document.getElementById('wishlistOverlay').classList.remove('open');
       document.getElementById('wishlistDrawer').classList.remove('open');
       document.body.style.overflow = '';
+    }
+
+    // ── R99 FLASH SALE (auto on 14 Oct 00:00, auto off after 18 Oct) ──
+    const FLASH_SALE = {
+      from: new Date('2026-10-14T00:00:00+02:00').getTime(),
+      until: new Date('2026-10-18T23:59:59+02:00').getTime(),
+      items: {
+        'Natural Retinol 10ml Roller': { was: 'R159' },
+        'Facial Scrub 50g': { was: 'R169' },
+        'Acne Roller 10ml': { was: 'R159' },
+        'Hormone Balance Roller 10ml': { was: 'R120' },
+        'Rooibos Revive Butter 200g': { was: 'R175' },
+        'Die Legende Beard Oil 30ml': { was: 'R145' },
+        'Heel & Elbow Balm 50gr': { was: 'R115' },
+        'Muscle Rub': { was: 'R115', size: '50gr', cardPrice: 'R99 – R159' },
+        'Fragrance Free Coffee & Salt Scrub with Rosemary 50gr': { was: 'R115' },
+        'Castor Oil': { was: 'R139', size: '200ml', cardPrice: 'R69 – R99' }
+      }
+    };
+
+    function flashSaleActive() {
+      const n = Date.now();
+      return n >= FLASH_SALE.from && n <= FLASH_SALE.until;
+    }
+
+    function flashModalArgs(name, price, sizeOptions) {
+      const it = FLASH_SALE.items[name];
+      if (!flashSaleActive() || !it) return { price: price, sizeOptions: sizeOptions };
+      if (it.size && sizeOptions) {
+        return {
+          price: it.cardPrice,
+          sizeOptions: sizeOptions.map(function(o) { return o[0] === it.size ? [o[0], 'R99 (normally ' + it.was + ')'] : o; })
+        };
+      }
+      return { price: 'R99 (normally ' + it.was + ')', sizeOptions: sizeOptions };
+    }
+
+    function applyFlashSaleCards() {
+      if (!flashSaleActive()) return;
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        const nameEl = card.querySelector('.product-name');
+        const it = nameEl && FLASH_SALE.items[nameEl.textContent.trim()];
+        if (!it) return;
+        const priceEl = card.querySelector('.product-price');
+        if (it.size) priceEl.textContent = it.cardPrice;
+        else priceEl.innerHTML = 'R99 <s style="opacity:.55;font-weight:400;font-size:.85em">' + it.was + '</s>';
+        let badge = card.querySelector('.special-badge');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'special-badge';
+          nameEl.parentNode.insertBefore(badge, nameEl);
+        }
+        badge.textContent = it.size ? '✨ R99 Flash Sale — ' + it.size : '✨ R99 Flash Sale';
+        card.dataset.flash = '1';
+      });
+    }
+    applyFlashSaleCards();
+
+    function showFlashSale() {
+      resetProductFilters();
+      filterProducts('all', document.querySelector('.tab-btn'));
+      currentFlashOnly = true;
+      applyProductFilters();
     }
 
     function resetProductFilters() {
