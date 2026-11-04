@@ -1918,6 +1918,24 @@
     </div>
   </section>
 
+  <!-- Mega Sale 2026 (1 Nov - 6 Dec) — hides itself after the end date -->
+  <section class="promo-banner-section" id="mega-sale-row" data-until="2026-12-06T23:59:59+02:00" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%); padding-bottom: 1.5rem;">
+    <div style="display:flex; gap:2rem; justify-content:center; align-items:center; flex-wrap:wrap; max-width:1000px; margin:0 auto;">
+      <div style="flex:1 1 300px; max-width:460px;">
+        <img src="mega-sale-2026.jpg" alt="Pamperlang Mega Sale — 20% off the whole Pamperlang range, 1 November to 6 December" class="promo-banner-img">
+      </div>
+      <div style="flex:1 1 300px; max-width:460px; text-align:center;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:0.18em; color:#8B3A58;">🎄 MEGA SALE 🎄</div>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(1.9rem,6vw,2.8rem); line-height:1.1; color:#2D5F3F; margin:0.5rem 0;">20% off the whole Pamperlang range</h2>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.95rem; color:#8B3A58;">1 November – 6 December 2026</div>
+        <p style="font-family:'Montserrat',sans-serif; font-size:0.9rem; line-height:1.6; color:#5a4a50; margin:0.9rem 0 0.4rem;">For the first time ever, the Mega Sale is open to everyone — not just agents. Get ready for Christmas and spoil yourself! 💗</p>
+        <p style="font-family:'Montserrat',sans-serif; font-size:0.78rem; line-height:1.5; color:#7a6a70; margin:0 0 0.5rem;">Fairy Bags are already on special reduced prices and are not part of the 20% off.</p>
+        <div class="promo-countdown" data-from="2026-11-01T00:00:00+02:00" data-until="2026-12-06T23:59:59+02:00"></div>
+        <div style="margin-top:1rem;"><a href="#products" class="btn-primary">Shop the Mega Sale</a></div>
+      </div>
+    </div>
+  </section>
+
   <!-- New 10ml Rollers (top of page) -->
   <section class="promo-banner-section" id="new-rollers-row" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%); padding-bottom: 1.5rem;">
     <div style="display:flex; gap:2rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:1100px; margin:0 auto;">
@@ -3491,7 +3509,8 @@
         if (item.fragrance) msg += ` — ${item.fragrance}`;
         msg += ` — ${item.price}\n`;
       });
-      msg += `\nEstimated Total: R${total}`;
+      if (window.MEGA_SALE_ON) msg += `\n🎄 Mega Sale (1 Nov – 6 Dec): please apply 20% off (not on Fairy Bags)`;
+      msg += `\nEstimated Total${window.MEGA_SALE_ON ? ' (before Mega Sale discount)' : ''}: R${total}`;
       if (deliveryType === 'delivery') msg += ` (+ delivery fee to be confirmed)`;
       msg += `\n\nThank you!`;
       return msg;
@@ -3689,6 +3708,18 @@ const backToTopBtn = document.getElementById('backToTop');
       });
     }
     initCountdowns();
+
+    // ── MEGA SALE (1 Nov – 6 Dec 2026): hide banner after the end date, add notes to the order ──
+    window.MEGA_SALE_ON = (function() {
+      const row = document.getElementById('mega-sale-row');
+      const on = Date.now() <= new Date('2026-12-06T23:59:59+02:00').getTime();
+      if (!on && row) row.remove();
+      if (on) {
+        const note = document.querySelector('.cart-note');
+        if (note) note.innerHTML += '<br>🎄 Mega Sale: 20% off the whole range (not Fairy Bags) will be confirmed in your final price.';
+      }
+      return on;
+    })();
 
     // ── PRICE FILTER ──
     let currentPriceRange = 'all';
