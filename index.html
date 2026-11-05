@@ -1936,31 +1936,28 @@
     </div>
   </section>
 
-  <!-- New 10ml Rollers (top of page) -->
-  <section class="promo-banner-section" id="new-rollers-row" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%); padding-bottom: 1.5rem;">
-    <div style="display:flex; gap:2rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:1100px; margin:0 auto;">
-      <div style="flex:1 1 300px; max-width:520px; text-align:center;">
-        <div class="promo-banner-label" style="color:#2D5F3F; white-space:normal;">✨ New Perfume Rollers — R80 each</div>
-        <img src="perfume-rollers-graphic.jpeg" alt="New natural perfume rollers — Jojoba oil base, alcohol free. R80 each, pack of 5 R299" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
-        <a href="#products" onclick="showCategoryTab('Perfumes')" class="btn-primary">Shop Perfume Rollers</a>
-      </div>
-      <div style="flex:1 1 300px; max-width:520px; text-align:center;">
-        <div class="promo-banner-label" style="color:#2D5F3F; white-space:normal;">✨ New 10ml Rollers — Castor Oil &amp; Retinol</div>
-        <img src="castor-retinol-rollers-graphic.jpeg" alt="Castor Oil R50 and Natural Retinol R159, now in handy 10ml rollers" class="promo-banner-img" style="margin: 0.6rem 0 0.8rem;">
-        <a href="#products" onclick="showRollers()" class="btn-primary">Shop 10ml Rollers</a>
-      </div>
+  <!-- Product Showcase Slider -->
+  <section class="showcase-section" id="showcase">
+    <div class="showcase-header">
+      <p class="section-tag">Pamperlang Range</p>
+      <h2 class="section-title">Our Product Range</h2>
+      <p class="section-sub">Tap any product to see more — WhatsApp Riette to place your order.</p>
     </div>
-  </section>
-
-  <!-- Top Promo Row -->
-  <section class="promo-banner-section" id="top-promo-row" style="background: linear-gradient(135deg, #fbf1f4 0%, #fffbfb 60%, #f2cdd6 100%);">
-    <div style="display:flex; gap:2rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:1100px; margin:0 auto;">
-      <div style="flex:1 1 280px; max-width:340px; text-align:center;">
-        <img src="pamperlang-collection-hero.jpeg" alt="Pamperlang Skoonheid — Nourish. Restore. Glow. Complete natural skincare for every step: washes, toners, serums and moisturizers." class="promo-banner-img">
+    <div class="showcase-wrap">
+      <button class="showcase-btn showcase-btn-prev" id="showcasePrev" aria-label="Previous">&#8592;</button>
+      <div class="showcase-outer">
+        <div class="showcase-track" id="showcaseTrack">
+          <div class="showcase-slide" data-product="Perfume Rollers 10ml — natural perfume rollers R80 each, pack of 5 R299"><img src="perfume-rollers-graphic.jpeg" alt="New natural perfume rollers — Jojoba oil base, alcohol free. R80 each, pack of 5 R299"></div>
+          <div class="showcase-slide" data-product="Castor Oil 10ml Roller — Castor Oil R50 and Natural Retinol R159 in handy 10ml rollers"><img src="castor-retinol-rollers-graphic.jpeg" alt="Castor Oil R50 and Natural Retinol R159, now in handy 10ml rollers"></div>
+          <div class="showcase-slide" data-product="Jou liggaam is nie gemaak vir Toxic Overload nie — kies natuurlik met Pamperlang"><img src="toxic-overload-natural-choice.jpeg" alt="Toxic Overload — A Natural Choice met Pamperlang"></div>
+          <div class="showcase-slide" data-product="Pamperlang Skincare Range — washes, toners, serums and moisturizers"><img src="pamperlang-collection-hero.jpeg" alt="Pamperlang Skoonheid — Nourish. Restore. Glow. Complete natural skincare for every step: washes, toners, serums and moisturizers."></div>
+          <div class="showcase-slide" data-product="Bathroom Essentials (Hand Wash, Body Wash &amp; Hand &amp; Body Lotion) — all enriched with Jojoba"><img src="bathroom-essentials-banner.jpeg" alt="Pamperlang Bathroom Essentials — Rose Vanilla Hand Wash, Vanilla Body Wash, Aloe Cucumber Hand &amp; Body Lotion, all enriched with Jojoba"></div>
+        </div>
       </div>
-      <div style="flex:1 1 280px; max-width:340px; text-align:center;">
-        <img src="bathroom-essentials-banner.jpeg" alt="Pamperlang Bathroom Essentials — Rose Vanilla Hand Wash, Vanilla Body Wash, Aloe Cucumber Hand & Body Lotion, all enriched with Jojoba" class="promo-banner-img">
-      </div>
+      <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="showcase-progress-wrap">
+      <div class="showcase-progress-fill" id="showcaseProgress"></div>
     </div>
   </section>
 
@@ -1985,28 +1982,6 @@
 
 
 
-  <!-- Product Showcase Slider -->
-  <section class="showcase-section" id="showcase">
-    <div class="showcase-header">
-      <p class="section-tag">Pamperlang Range</p>
-      <h2 class="section-title">Our Product Range</h2>
-      <p class="section-sub">Tap any product to see more — WhatsApp Riette to place your order.</p>
-    </div>
-    <div class="showcase-wrap">
-      <button class="showcase-btn showcase-btn-prev" id="showcasePrev" aria-label="Previous">&#8592;</button>
-      <div class="showcase-outer">
-        <div class="showcase-track" id="showcaseTrack">
-          <div class="showcase-slide" data-product="New! Hormone Balance Roller &amp; Hot Flush Cooling Spray — with Sage Essential Oil"><img src="https://media.portmoni.com/resized/69614/Pink_White_and_Beige_Elegant_Salon__Spa_Instagram_Post_1-thumbnail-600x600.png" alt="New Hormone Balance Roller and Hot Flush Cooling Spray"></div>
-          <div class="showcase-slide" data-product="Jou liggaam is nie gemaak vir Toxic Overload nie — kies natuurlik met Pamperlang"><img src="toxic-overload-natural-choice.jpeg" alt="Toxic Overload — A Natural Choice met Pamperlang"></div>
-          <div class="showcase-slide" data-product="Vel Bederf Pakkie — Velsorg Combo R350, terwyl voorraad hou"><img src="vel-bederf-pakkie.jpeg" alt="Vel Bederf Pakkie — R350 Combo"></div>
-        </div>
-      </div>
-      <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
-    </div>
-    <div class="showcase-progress-wrap">
-      <div class="showcase-progress-fill" id="showcaseProgress"></div>
-    </div>
-  </section>
 
 
   <!-- Lightbox for product cards -->
