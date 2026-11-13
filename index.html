@@ -1934,6 +1934,18 @@
         <div style="margin-top:1rem;"><a href="#products" class="btn-primary">Shop the Mega Sale</a></div>
       </div>
     </div>
+    <div id="xmas-offer" data-until="2026-11-30T23:59:59+02:00" style="max-width:900px; margin:1.8rem auto 0; display:flex; gap:1.6rem; align-items:center; justify-content:center; flex-wrap:wrap;">
+      <div style="flex:1 1 280px; max-width:400px;">
+        <img src="kersfees-aanbod-2026.jpeg" alt="Pamperlang Kersfees-aanbod — gratis Floral Tote Bag saam met bestellings bo R999, 15 tot 30 November" class="promo-banner-img">
+      </div>
+      <div style="flex:1 1 280px; max-width:440px; background:#fff; border:2px dashed #C8708A; border-radius:18px; padding:1.1rem 1.3rem; text-align:center; box-shadow:0 6px 24px rgba(139,58,88,0.10);">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:0.16em; color:#8B3A58;">🎄 KERSFEES-AANBOD · CHRISTMAS OFFER 🎁</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(1.4rem,4.6vw,1.9rem); line-height:1.2; color:#2D5F3F; margin:0.4rem 0;">Free Floral Tote Bag worth R120</div>
+        <p style="font-family:'Montserrat',sans-serif; font-size:0.88rem; line-height:1.6; color:#5a4a50; margin:0.3rem 0;">Order between <strong>15 and 30 November</strong> and get a FREE Floral Tote Bag when your order is <strong>R999 or more after your Mega Sale discount</strong>. Mega Sale discount included — available on all products! ✨</p>
+        <p style="font-family:'Montserrat',sans-serif; font-size:0.74rem; line-height:1.5; color:#7a6a70; margin:0.3rem 0 0.5rem;">While stock lasts. Bags cannot be bought separately. Patterns cannot be chosen and are allocated at Pamperlang's discretion.</p>
+        <div class="promo-countdown" data-from="2026-11-15T00:00:00+02:00" data-until="2026-11-30T23:59:59+02:00"></div>
+      </div>
+    </div>
   </section>
 
   <!-- Product Showcase Slider -->
@@ -3509,6 +3521,7 @@
         msg += ` — ${item.price}\n`;
       });
       if (window.MEGA_SALE_ON) msg += `\n🎄 Mega Sale (1 Nov – 6 Dec): please apply 20% off (not on Fairy Bags)`;
+      if (window.XMAS_OFFER_ON) msg += `\n🎁 Kersfees offer (15–30 Nov): if my order is R999+ after the Mega Sale discount, please include my free Floral Tote Bag`;
       msg += `\nEstimated Total${window.MEGA_SALE_ON ? ' (before Mega Sale discount)' : ''}: R${total}`;
       if (deliveryType === 'delivery') msg += ` (+ delivery fee to be confirmed)`;
       msg += `\n\nThank you!`;
@@ -3713,6 +3726,9 @@ const backToTopBtn = document.getElementById('backToTop');
       const row = document.getElementById('mega-sale-row');
       const on = Date.now() <= new Date('2026-12-06T23:59:59+02:00').getTime();
       if (!on && row) row.remove();
+      const xo = document.getElementById('xmas-offer');
+      window.XMAS_OFFER_ON = Date.now() <= new Date('2026-11-30T23:59:59+02:00').getTime();
+      if (!window.XMAS_OFFER_ON && xo) xo.remove();
       if (on) {
         const note = document.querySelector('.cart-note');
         if (note) note.innerHTML += '<br>🎄 Mega Sale: 20% off the whole range (not Fairy Bags) will be confirmed in your final price.';
